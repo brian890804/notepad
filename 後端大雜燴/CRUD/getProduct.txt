@@ -1,0 +1,45 @@
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Product;
+
+@RestController
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+public class ProductController {
+
+	private final List<Product> productDB = new ArrayList<>();
+
+	@PostConstruct
+	private void initDB() {
+		productDB.add(new Product("A1", "Android Development", 380));
+		productDB.add(new Product("A2", "Google Development", 480));
+		productDB.add(new Product("A3", "Doogle Development", 380));
+		productDB.add(new Product("A4", "Ios Development", 380));
+	}
+
+	@GetMapping("/products/{id}")
+	 public ResponseEntity<Product> getProduct(@PathVariable("id") String id) {
+        Optional<Product> productOp = productDB.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+
+        if (productOp.isPresent()) {
+            Product product = productOp.get();
+            return ResponseEntity.ok().body(product);
+        } else {
+        	return ResponseEntity.notFound().build();
+        }
+    }
+}

@@ -1,0 +1,30 @@
+	private final List<Product> productDB = new ArrayList<>();
+	@PostConstruct
+	private void initDB() {
+		productDB.add(new Product("A1", "Android Development", 380));
+		productDB.add(new Product("A2", "Google Development", 480));
+		productDB.add(new Product("A3", "Doogle Development", 380));
+		productDB.add(new Product("A4", "Ios Development", 380));
+	}
+
+
+@PostMapping("/products")
+	public ResponseEntity<Product> createProduct(@RequestBody Product request){
+		boolean isIdDuplicated=productDB.stream()
+				.anyMatch(p->p.getId().equals(request.getId())); //找到重複的資料的話
+		if(isIdDuplicated) {
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();//422
+		}
+		Product product= new Product();
+		product.setId(request.getId());
+		product.setName(request.getName());
+		product.setPrice(request.getPrice());
+		productDB.add(product);
+		
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(product.getId())
+				.toUri();
+		return ResponseEntity.created(location).body(product);
+	}

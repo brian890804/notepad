@@ -1,0 +1,29 @@
+@RequestParam(GET/POST)***可支援多個使用*****
+
+ -defaultValue 如果本次請求沒有攜帶這個引數，或者引數為空，那麼就會啟用預設值
+
+ -name 繫結本次引數的名稱，要跟URL上面的一樣
+
+ -required 這個引數不是必須的，如果為 true，不傳引數會報錯
+
+ -value 跟name一樣的作用，是name屬性的一個別名
+
+ex @RequestParam(value = "keyword", defaultValue = "")
+
+------------------------------------------------------------
+
+@RequestBody（不能用於GET請求）*********一個請求中只能用一次***********
+
+ -Content-Type 為 application/json，確保傳遞是 JSON 資料
+
+ -引數轉化的配置必須統一，否則無法接收資料，比如 json、request 混用等
+
+------------------------------------------------------------
+
+@PathVariable 從URI請求參數中的佔位取的參數
+
+-name 繫結引數的名稱，預設不傳遞時，繫結為同名的形參。 賦值但名稱不一致時則報錯
+
+-value 跟name一樣的作用，是name屬性的一個別名
+
+-required 這個引數不是必須的，如果為 true，不傳引數會報錯

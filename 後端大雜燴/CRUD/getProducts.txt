@@ -1,0 +1,7 @@
+
+	@GetMapping("/products")
+	public ResponseEntity<List<Product>> getProducts() {
+	    List<Product> products = productDB;
+
+	    return ResponseEntity.ok().body(products);
+	}

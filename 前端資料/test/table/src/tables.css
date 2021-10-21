@@ -1,0 +1,11 @@
+table,
+th,
+td
+ {
+    padding:28px;
+    min-width: 25%;
+    line-height: 100%;
+    text-align: center;
+    border: 1px solid;
+    word-break:break-all;
+}

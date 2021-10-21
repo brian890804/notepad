@@ -1,0 +1,2 @@
+import Moment from 'react-moment';
+<Moment format="YYYY-MM-DD A hh:mm">{date}</Moment>{`From:????`}

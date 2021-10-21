@@ -1,0 +1,15 @@
+
+	@PutMapping("/products/{id}")
+	public ResponseEntity<Product>replaceProduct(@PathVariable("id") String id , @RequestBody Product request){
+		Optional <Product> productOp=productDB.stream()
+				.filter(p->p.getId().equals(id))
+				.findFirst();
+		if(productOp.isPresent()) {
+			Product product= productOp.get();
+			product.setName(request.getName());
+			product.setPrice(request.getPrice());
+			return ResponseEntity.ok().body(product);
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}

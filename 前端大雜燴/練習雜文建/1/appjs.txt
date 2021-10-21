@@ -1,0 +1,30 @@
+import logo from './logo.svg';
+import './App.css';
+import { Login } from "./auth/Login"
+import member from "./auth/member.json"
+
+const data = undefined
+
+const initMember =
+  [
+    {
+      name: "123",
+      age: 456
+    }
+  ]
+
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Login
+          abc={data || initMember}
+          kkk={"1231"}
+        />
+      </header>
+    </div>
+  );
+}
+
+export default App;

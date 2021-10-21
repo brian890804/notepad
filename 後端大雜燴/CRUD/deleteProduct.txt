@@ -1,0 +1,8 @@
+	@DeleteMapping("/products/{id}")
+	public ResponseEntity<Void> deleteProduct(@PathVariable("id") String id) {
+		System.out.print(id);
+		System.out.print("test");
+		boolean isRemoved = productDB.removeIf(p -> p.getId().equals(id));
+		System.out.print(isRemoved);
+		return isRemoved ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+	}

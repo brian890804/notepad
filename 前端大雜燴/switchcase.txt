@@ -1,0 +1,10 @@
+switch (text) {
+            case (text === "信箱"):
+                history.push("/Member/Certification")
+                break;
+            case (text === "手機"):
+                history.push("/Member/Certification")
+                break;
+            default: console.log("error")
+                break;
+        }

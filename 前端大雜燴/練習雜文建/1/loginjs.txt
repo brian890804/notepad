@@ -1,0 +1,18 @@
+import React from "react"
+
+
+export function Login({ abc, kkk }) {
+
+    return (
+        <>
+
+            {abc.map((member) => {
+                if (member) {
+                    return (<div>{member.name}<p>{kkk}</p></div>)
+                }
+            })}
+
+        </>
+    )
+}
+

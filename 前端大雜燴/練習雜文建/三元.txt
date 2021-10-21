@@ -1,0 +1,5 @@
+{open ?<CircularProgress/> :<div>
+                        <Route exact path="/" component={Table1} />
+                        <Route exact path="/second" component={Table2} />
+                        <Route exact path="/ReadComfile" component={AC} />
+                        </div> }

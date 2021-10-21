@@ -1,0 +1,29 @@
+URI 直接定位
+URL 一層一層進入
+
+獲取當前請求的URI
+
+URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(product.getId())
+				.toUri();
+
+fromCurrentRequest：以目前呼叫的資源路徑為基礎來建立 URI，此處為「http://…/products」。
+
+path：以目前的資源路徑再做延伸，定義新的路徑格式，可加入佔位符，此處為「http://…/products/{id}」。
+
+buildAndExpand：將參數填入路徑中的佔位符，產生真實的資源路徑，此處為「http://…/products/實際產品編號」。
+----------------------------------------------------------------------------
+
+URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+------------------------------------------------------------------------------
+獲取指定請求的URI
+
+URI uri = ServletUriComponentsBuilder.fromContextPath(request).build().toUri();
+------------------------------------------------------------------------------
+// 設定新路徑
+URI uri = ServletUriComponentsBuilder.fromCurrentRequest().replacePath("/test/data/get").build().toUri();
+------------------------------------------------------------------------------
+// 設定新路徑並替換路徑中的變數值
+URI uri = ServletUriComponentsBuilder.fromCurrentRequest().replacePath("/test/data/get/{type}").buildAndExpand(1).toUri();

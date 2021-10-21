@@ -1,0 +1,2 @@
+.replace(/<\/?[^>]*>/g,''); //去除HTML tag
+    quest = quest.replace(/&nbsp;/g,'\n')去除空白

@@ -1,0 +1,13 @@
+ Optional的if true or false 判斷需用 .isPrsent()  
+-------------------------------------------------
+Optional<Product> productOp = productDB.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+
+ if (productOp.isPresent()) {
+            Product product = productOp.get();
+            return ResponseEntity.ok().body(product);
+        } else {
+        	return ResponseEntity.notFound().build();
+        }
+-------------------------------------------------

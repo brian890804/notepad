@@ -1,0 +1,2 @@
+netstat -ano | findstr 端口号 查詢 port 號誰佔用了 可以用 工作管理員看PID符合進行刪除
+taskkill -PID 进程号 -F  刪除卓號

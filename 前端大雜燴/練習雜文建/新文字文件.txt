@@ -1,0 +1,12 @@
+ const auth = () => {
+    const check = Sigin.find((element) => element.errorMessage === "通過")
+    console.log(check)
+    if (check) {
+      setOpen(true);
+      console.log(open);
+    } else {
+      setOpen(false);
+      console.log(open);
+    }
+
+  };

@@ -1,0 +1,14 @@
+ useEffect(()=>{
+        fetch('https://data.epa.gov.tw/api/v1/aqx_p_136?api_key=5c76024b-040e-40d3-bbd2-dc108d6a9b4f')
+        .then((res)=>{
+            return(res.json())
+        })
+        .then((result)=>{
+            let temp=result.records.filter((record)=>
+            record.ItemName==='溫度' && record.SiteName==="士林"
+            )
+            console.log(temp)
+            setDatas(temp)
+        })
+    },[])
+    console.log(datas)

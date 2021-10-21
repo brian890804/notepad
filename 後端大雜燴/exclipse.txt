@@ -1,0 +1,39 @@
+-----------------------------------
+@RestController 標記為Controller
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE) 定義回傳為JOSN格式
+
+@PostConstruct在伺服器載入Servlet的時候執行，並且只會被伺服器執行一次
+--------------------------------------
+Project Lombok 開發套件
+
+@Getter
+@Setter 
+@ToString 自動印出所有變數
+@EqualsAndHashCode
+@RequiredArgsConstructor : 生成一個包含 “特定參數” 的 constructor，特定參數指的是那些有加上 final 修飾詞的變量們
+ex private final integer id;
+
+常用
+********************************************
+@Builder 自動生成流式 set 值寫法
+@Data =@Getter/@Setter @ToString @EqualAndHashCode @RequiredArgsConstructor組合
+@AllArgsConstructor 生成建構元 must
+@NoArgsConstructor 生成空的建構元 must
+********************************************
+
+-----------------------------------------
+get   ex:
+
+	@GetMapping("/products/{id}")
+	public Product getProduct(@PathVariable("id") String id) {
+		Product product = new Product();
+		product.setId(id);
+		product.setName("Romantic Storyt");
+		product.setPrice(2000);
+
+		return product;
+	}
+-------------------------------------------
+
+其他請求方法 mothod =GET POST PUT DELETE  HEAD PATCH
+@RequestMapping(method = RequestMethod.HEAD)

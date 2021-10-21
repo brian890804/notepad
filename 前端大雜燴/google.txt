@@ -1,0 +1,10 @@
+https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Fwww.google.com.tw%2F&hl=zh-TW&dsh=S-586964298%3A1627438209755544&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp
+https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Fwww.google.com.tw%2F&hl=zh-TW&dsh=S688762978%3A1627526163429573&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp
+https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Dzh-TW&hl=zh-TW&dsh=S-1157343788%3A1627630195314812&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp
+https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Dzh-TW&hl=zh-TW&dsh=S-1257550236%3A1628647867664491&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp
+
+
+
+
+
+https://accounts.google.com/signup/v2/webgradsidvphone?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Dzh-TW&hl=zh-TW&dsh=S-1257550236%3A1628647867664491&gmb=exp&biz=false&flowName=GlifWebSignIn&flowEntry=SignUp&TL=AM3QAYYnHtVQ30AAShcrNShcTZ35_kPAym3KJ2ZZCYbXycbkUdCqtSgzGKqOWC37

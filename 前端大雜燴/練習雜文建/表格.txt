@@ -1,0 +1,47 @@
+const getSex=(sex)=>{
+  switch(sex){
+    case 0:
+      return "女"
+      break;
+    case 1:
+      return "男"
+      break;
+  }
+
+}
+
+function App() {
+  return (
+
+    <div className="App">
+
+      <header className="App-header">
+
+        <table>
+          <thead>
+            <tr>
+              <th>
+                name
+              </th>
+              <th>
+                dollar
+              </th>
+              <th>
+                sex
+              </th>
+              <th>
+                age
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {members.map((member) => {
+              return (<tr><td>{member.name}</td><td>{member.dollar}</td><td>{getSex(member.sex)}</td><td>{member.age}</td></tr>)
+            })}
+
+          </tbody>
+        </table>
+      </header>
+    </div>
+  );
+}

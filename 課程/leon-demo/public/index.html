@@ -1,0 +1,492 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			textarea { vertical-align: bottom; }
+			#output { overflow: auto; }
+			#output > p { overflow-wrap: break-word; }
+			#output span { color: blue; }
+			#output span.error { color: red; }
+		</style>
+    <script>
+        var apiDomain = "https://asia-northeast1-leon-demo-3246f.cloudfunctions.net";
+        if (document.location.origin.indexOf("localhost") > 0) apiDomain = "http://localhost:3000";
+        
+
+//=============================================================================================
+        function intFromBytes(x)
+        {
+            var val = 0;
+            for (var i = 0; i < x.length; ++i) {
+                val += x[i];
+                if (i < x.length - 1) {
+                val = val << 8;
+                }
+            }
+            return val;
+        }
+
+        function getInt64Bytes(x)
+        {
+            var bytes = [];
+            var i = 8;
+            do {
+                bytes[--i] = x & 255;
+                x = x >> 8;
+            } while (i);
+            return bytes;
+        }
+
+        function strToUtf8Bytes(str)
+        {
+            const utf8 = [];
+            for (let ii = 0; ii < str.length; ii++) {
+                let charCode = str.charCodeAt(ii);
+                if (charCode < 0x80) utf8.push(charCode);
+                else if (charCode < 0x800) {
+                utf8.push(0xc0 | (charCode >> 6), 0x80 | (charCode & 0x3f));
+                } else if (charCode < 0xd800 || charCode >= 0xe000) {
+                utf8.push(
+                    0xe0 | (charCode >> 12),
+                    0x80 | ((charCode >> 6) & 0x3f),
+                    0x80 | (charCode & 0x3f)
+                );
+                } else {
+                ii++;
+                // Surrogate pair:
+                // UTF-16 encodes 0x10000-0x10FFFF by subtracting 0x10000 and
+                // splitting the 20 bits of 0x0-0xFFFFF into two halves
+                charCode =
+                    0x10000 + (((charCode & 0x3ff) << 10) | (str.charCodeAt(ii) & 0x3ff));
+                utf8.push(
+                    0xf0 | (charCode >> 18),
+                    0x80 | ((charCode >> 12) & 0x3f),
+                    0x80 | ((charCode >> 6) & 0x3f),
+                    0x80 | (charCode & 0x3f)
+                );
+                }
+            }
+            return utf8;
+        }
+
+        function utf8ArrayToStr(array)
+        {
+            var out, i, len, c;
+            var char2, char3;
+
+            out = "";
+            len = array.length;
+            i = 0;
+            while (i < len) {
+                c = array[i++];
+                switch (c >> 4) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    // 0xxxxxxx
+                    out += String.fromCharCode(c);
+                    break;
+                case 12:
+                case 13:
+                    // 110x xxxx   10xx xxxx
+                    char2 = array[i++];
+                    out += String.fromCharCode(((c & 0x1f) << 6) | (char2 & 0x3f));
+                    break;
+                case 14:
+                    // 1110 xxxx  10xx xxxx  10xx xxxx
+                    char2 = array[i++];
+                    char3 = array[i++];
+                    out += String.fromCharCode(
+                    ((c & 0x0f) << 12) | ((char2 & 0x3f) << 6) | ((char3 & 0x3f) << 0)
+                    );
+                    break;
+                }
+            }
+
+            return out;
+        }
+
+        function uploadExcel(fileInfo)
+        {
+            const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbXlhY2NvdW50Lm5hbmkuY29vbC8iLCJzdWIiOiJ1c2Vycy9ob3JyeWUiLCJmcm9tIjoiTmFuaSIsInVzZXJuYW1lIjoiaG9ycnllIiwiZW1haWx2YWxpZCI6dHJ1ZSwibW9iaWxldmFsaWQiOmZhbHNlLCJlbWFpbCI6ImhvcnJ5bGVlQGdtYWlsLmNvbSIsInVpZCI6ImU3ZTMzZTMwLWEyYzQtMTFlOS04MTIyLWYxNDBkMWE3NDI4NSIsImp0aSI6ImY1NDQxYjQ4LTA3NjAtNDQ2ZS05NzBlLTQ2MjdlM2JiNWU2ZSIsImlhdCI6MTYzMDk4NDg5NSwiZXhwIjoxNjM2MTY4ODk1fQ.9UlYUN7n2K5VWLJ2ZX64VU9t9sq5JWsvp9xPoyY_xTw";
+            return new Promise((resolve, reject) => {
+                var result = null;
+                var rawBytes = new Uint8Array(fileInfo.content);
+                var info = JSON.stringify({
+                    filepath: `${fileInfo.name}`,
+                    //filedest: apiDomain.indexOf('localhost') > 0 ? `./tmp/${fileInfo.name}` : `/tmp/${fileInfo.name}`,
+                    name: fileInfo.name,
+                    type: fileInfo.type,
+                    size: fileInfo.size,
+                });
+
+                var infoBytes = strToUtf8Bytes(info);
+                var lengthBytes = getInt64Bytes(infoBytes.length);
+                var newArray = new Uint8Array(
+                    lengthBytes.length + infoBytes.length + rawBytes.length
+                );
+                var index = 0;
+                newArray.set(lengthBytes, index);
+                index += lengthBytes.length;
+                newArray.set(infoBytes, index);
+                index += infoBytes.length;
+                newArray.set(rawBytes, index);
+                // var test = intFromBytes(lengthBytes);
+                // var test2 = utf8ArrayToStr(infoBytes);
+                var xhr = new XMLHttpRequest();
+                // var formData = new FormData();
+                // formData.append("bytes", newArray);
+                // formData.append("file", fileInfo.name);
+                // xhr.send(formData);
+                // xhr.open("POST", `${apiDomain}/class/uploadTaskExcel`, true);
+                // xhr.setRequestHeader("Content-Type", "application/form-data");
+                // xhr.send(formData);
+                xhr.open("POST", `${apiDomain}/uploadFile`, true);
+                xhr.setRequestHeader("Content-Type", "application/octet-stream");
+                xhr.setRequestHeader("Authorization", token);
+                xhr.send(newArray);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // upload done
+                        result = JSON.parse(xhr.response);
+                    }
+                };
+                xhr.onload = function (res) {
+                    // complete
+                    if (result) {
+                        resolve(result);
+                    }
+                    else {
+                        resolve({
+                            status: "failed",
+                            error: "file not uploaded",
+                        });
+                    }
+                };
+            });
+        }
+
+        async function importExcel()
+        {
+            const filesInfo = await readFiles('queUploadFile');
+            if (filesInfo.status == "success") {
+                const fileList = filesInfo.content;
+                if (fileList && fileList.length > 0) {
+                    var fileSuccess = [];
+                    var fileFailed = [];
+                    for (var i = 0 ; i < fileList.length ; i++) {
+                        const excelInfo = filesInfo.content[i];
+                        const result = await uploadExcel(excelInfo);
+                        if (result.status == "success") {
+                            fileSuccess.push({
+                                name: excelInfo.name,
+                                type: excelInfo.type,
+                                size: excelInfo.size,
+                                deg: excelInfo.deg,
+                                content: result.content
+                            });
+                        }
+                        else {
+                            fileFailed.push({
+                                name: excelInfo.name,
+                                type: excelInfo.type,
+                                size: excelInfo.size,
+                                deg: excelInfo.deg,
+                                error: result.error
+                            });
+                        }
+                    }
+                    for (var i = 0 ; i <　fileSuccess.length ; i++) {
+                        alert(`upload ${fileSuccess[i].name} done`);
+                    }
+                    for (var i = 0 ; i < fileFailed.length ; i++) {
+                        alert(`failed to upload file ${fileFailed[i].name}, err:${fileFailed[i].error}`);
+                    }
+                }
+                // clear files
+                const uiQueUploadFile = document.getElementById('queUploadFile');
+                if (uiQueUploadFile) uiQueUploadFile.value = '';
+            }
+        }
+
+        function loadFileContent(file)
+        {
+            return new Promise((resolve, reject) => {
+                var reader = new FileReader();                
+                reader.readAsArrayBuffer(file);
+                reader.onloadstart = function(status) {
+                    //if (uiProgress) uiProgress.innerHTML = "0%";
+                };
+                reader.onprogress = function(status) {
+                    var loaded = status.loaded;
+                    var total = status.total;
+                    //if (uiProgress) uiProgress.innerHTML = `${(loaded * 100 / total).toFixed(0)}%`;
+                };
+                reader.onload = function(status) {
+                    resolve({
+                        name: file.name,
+                        type: file.type,
+                        size: file.size,
+                        deg: 0,
+                        content: Array.from(new Uint8Array(reader.result))
+                    });
+                };
+                reader.onerror = function(status) {
+                    reject(reader.error);
+                };
+            });
+        }
+
+        //執行選擇完圖片，暫時上傳圖片，加入 壓縮圖片產生預覽圖 的功能
+        function readFiles(filePickerId)
+        {
+            return new Promise((resolve, reject) => {
+                var uiFilePicker = document.getElementById(filePickerId);
+                if (uiFilePicker && uiFilePicker.files.length > 0) {
+                    var loaderPromises = [];
+
+                    for (var i = 0 ; i < uiFilePicker.files.length ; i++) {
+                        loaderPromises.push(loadFileContent(uiFilePicker.files[i]));
+                    }
+                    Promise.all(loaderPromises)
+                    .then(results => {
+                        resolve({
+                            status: "success",
+                            content: results
+                        });
+                    })
+                    .catch(err => {
+                        reject(err);
+                    });
+                }
+                else {
+                    resolve({
+                        status: "failed",
+                        error: "no file selected"
+                    });
+                }
+            });
+        }
+
+//=============================================================================================
+
+        function onBtnHelloWorld()
+        {
+            fetch(`${apiDomain}/helloWorld`, {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((result) => {
+              alert(JSON.stringify(result));
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function onBtnAPIParams()
+        {
+            fetch(`${apiDomain}/apiParams`, {
+              method: "POST",
+              body: JSON.stringify({
+                "msg":"hello world"
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((result) => {
+              alert(JSON.stringify(result));
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function onFirebaseAdd()
+        {
+            const uiTxtName = document.getElementById('txtName');
+            const uiTxtAge = document.getElementById('txtAge');
+            const data = {};
+            if (uiTxtName.value) data.name = uiTxtName.value;
+            if (uiTxtAge.value) data.age = uiTxtAge.value;
+            fetch(`${apiDomain}/firestoreAdd`, {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((result) => {
+              if (result.status == "success")
+                alert("OK");
+              else
+                alert("NOT OK");
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function onFirebaseGet()
+        {
+            const uiDataKey = document.getElementById('dataKey');
+            const data = {};
+            if (uiDataKey.value) data.dataKey = uiDataKey.value;
+            fetch(`${apiDomain}/firestoreGet`, {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((result) => {
+              if (result.status == "success") {
+                const content = result.content;
+                alert(`id:${content.id}, data: ${JSON.stringify(content.data)}`);
+              }
+              else
+                alert("NOT OK");
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function onFirebaseWhere()
+        {
+            const uiTxtName = document.getElementById('txtNameWhere');
+            const uiTxtAge = document.getElementById('txtAgeWhere');
+            const data = {};
+            if (uiTxtName.value) data.name = uiTxtName.value;
+            if (uiTxtAge.value) data.age = uiTxtAge.value;
+            fetch(`${apiDomain}/firestoreWhere`, {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+            .then((res) => {
+                return res.json();
+            })
+            .then((result) => {
+              if (result.status == "success") {
+                const datas = result.content;
+                var strContent = "";
+                for (var i = 0 ; i < datas.length ; i++) {
+                  const data = datas[i].data;
+                  if (strContent.length > 0) strContent += ", ";
+                  strContent += JSON.stringify({
+                    name: data.name,
+                    age: data.age
+                  });
+                }
+                alert(strContent);
+              }
+              else
+                alert("NOT OK");
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function onResize()
+        {
+            mDeviceWidth = window.innerWidth;
+            mDeviceHeight = window.innerHeight;
+        }
+
+        function registerEvent()
+        {
+            window.onresize = function () {
+                onResize();
+            };
+            const uiBtnHelloWorld = document.getElementById('btnHelloWorld');
+            if (uiBtnHelloWorld) uiBtnHelloWorld.addEventListener("click", onBtnHelloWorld);
+            const uiBtnAPIParams = document.getElementById('btnAPIParams');
+            if (uiBtnAPIParams) uiBtnAPIParams.addEventListener("click", onBtnAPIParams);
+
+            const uiBtnAdd = document.getElementById('btnAdd');
+            if (uiBtnAdd) uiBtnAdd.addEventListener("click", onFirebaseAdd);
+            const uiBtnGet = document.getElementById('btnGet');
+            if (uiBtnGet) uiBtnGet.addEventListener("click", onFirebaseGet);
+            const uiBtnWhere = document.getElementById('btnWhere');
+            if (uiBtnWhere) uiBtnWhere.addEventListener("click", onFirebaseWhere);
+            
+            const uiBtnImport = document.getElementById('btnImport');
+            if (uiBtnImport) uiBtnImport.addEventListener("click", importExcel);
+        }
+        
+        document.onreadystatechange = function()
+        {
+            if (document.readyState === 'complete') {
+                registerEvent();
+                onResize();
+
+                const uiTextYear = document.getElementById('textYear');
+                if (uiTextYear) {
+                    const curTime = new Date();
+                    var year = curTime.getFullYear();
+                    if (curTime.getMonth() < 8) year -= 1;
+                    uiTextYear.placeholder = (year-1911).toString();
+                    uiTextYear.value = (year-1911).toString();
+                }
+            }
+        }
+    </script>
+	</html>
+	<body style="margin: 0 auto; width: 100%; height: 100%; top: 0px; left: 0px; text-align: center;">
+    <br>
+    <input type="button" id="btnHelloWorld" style="width:200px;font-size:24px;" value="Hello World">
+    <input type="button" id="btnAPIParams" style="width:200px;font-size:24px;" value="API Params">
+    <hr>
+    <br>
+    <div>
+      <span style="font-size:24px;">姓名:<input type="text" id="txtName" style="width:200px;font-size:24px;" placeholder="姓名"/></span>
+      <span style="font-size:24px;">年齡:<input type="text" id="txtAge" style="width:200px;font-size:24px;" placeholder="年齡"/></span>
+      <input type="button" id="btnAdd" style="width:200px;font-size:24px;" value="加入">
+    </div>
+    <hr>
+    <br>
+    <div>
+      <span style="font-size:24px;">dataKey:<input type="text" id="dataKey" style="width:200px;font-size:24px;" placeholder="dataKey"/></span>
+      <input type="button" id="btnGet" style="width:200px;font-size:24px;" value="取值">
+    </div>
+    <hr>
+    <br>
+    <div>
+      <span style="font-size:24px;">姓名:<input type="text" id="txtNameWhere" style="width:200px;font-size:24px;" placeholder="姓名"/></span>
+      <span style="font-size:24px;">年齡:<input type="text" id="txtAgeWhere" style="width:200px;font-size:24px;" placeholder="年齡"/></span>
+      <input type="button" id="btnWhere" style="width:200px;font-size:24px;" value="搜尋">
+    </div>
+    <hr>
+    <br>
+    <div>
+      <h2>示範匯入Excel檔案</h2>
+      <input id="queUploadFile" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="width:300px;height:50px;font-size:24px"/>
+      <input type="button" id="btnImport" style="width:200px;font-size:24px;" value="匯入Excel">
+  </div>
+  </body>
+</html>

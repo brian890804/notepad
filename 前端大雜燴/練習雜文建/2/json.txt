@@ -1,0 +1,18 @@
+[
+    {
+        "name":"LIN",
+        "dollar":100000,
+        "sex":0,
+        "age":18      
+    },{
+        "name":"WEI",
+        "dollar":150000,
+        "sex":1,
+        "age":19      
+    },{
+        "name":"EN",
+        "dollar":80000000,
+        "sex":1,
+        "age":28      
+    }
+]

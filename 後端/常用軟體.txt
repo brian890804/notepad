@@ -1,0 +1,6 @@
+postman 測試後端指令
+eclipse 寫後端
+mySql、heidiSql   資料庫
+React js 前端
+Material UI 前端資料
+

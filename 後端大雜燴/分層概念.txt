@@ -1,0 +1,8 @@
+一、分層的概念
+後端程式大致上可分成三個主要層次，每個層次都有不同的職責，而不是將所有的程式碼都寫在同一個地方。
+
+1.表示層：也就是 Controller，應該負責接收前端的請求（request），並請 Service 處理，最後將資料做回應（response）。回應的範疇包括狀態碼（status code）、標頭（header）與主體（body）等。
+
+2.業務邏輯層：又稱作 Service，會被 Controller 呼叫。它負責根據請求來進行資料處理，並回傳結果。也可能被其他 Service 呼叫。
+
+3.資料持久層：擔任與資料庫溝通的媒介，會被 Service 呼叫。常透過「資料存取物件」（data access object，DAO）來實現。

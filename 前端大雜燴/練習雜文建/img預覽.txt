@@ -1,0 +1,12 @@
+const handleImageChange = (e) => {
+        e.preventDefault();
+        let reader = new FileReader();
+        let file = e.target.files[0]
+        console.log(reader)
+        reader.onloadend = () => {
+            setImgFile(reader.result)
+
+        }
+        reader.readAsDataURL(file);
+
+    }

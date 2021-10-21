@@ -1,0 +1,10 @@
+.square
+{
+    min-height: 60px;
+    min-width: 60px;
+    max-height: 61px;
+};
+.board-row
+{
+    line-height: 60px;
+}
