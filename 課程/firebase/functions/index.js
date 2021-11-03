@@ -6,4 +6,7 @@ const region = 'asia-east1';//TW
 //
 const apis = require('./apis.js');
 exports.helloWorld = functions.region(region).https.onRequest((apis.fncHelloWorld));
-
+exports.apiParams = functions.region(region).https.onRequest(apis.fncAPIParams);
+exports.fireStoreAdd = functions.region(region).https.onRequest(apis.fncFirestoreAdd);
+exports.fireStoreGet = functions.region(region).https.onRequest(apis.fncFirestoreGet);
+exports.fireStoreWhere = functions.region(region).https.onRequest(apis.fncFirestoreWhere);

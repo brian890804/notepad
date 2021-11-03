@@ -1,0 +1,6 @@
+    var result = new Set()
+    groups.forEach((item) => {
+        return (!result.has(item) ? result.add(item) : false)
+
+    })
+    console.log([...result])//轉換為陣列樣式

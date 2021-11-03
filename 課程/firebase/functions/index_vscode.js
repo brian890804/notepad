@@ -1,4 +1,4 @@
-/*eslint-disable*/
+
 const express = require('express');
 const apis = require(__dirname + '/apis.js');
 const app = express();
@@ -17,10 +17,14 @@ app.all('*', function (req, res, next) {
 });
 
 app.post('/helloWorld', apis.fncHelloWorld);
-
+app.post('/apiParams', apis.fncAPIParams);
+app.post('/fireStoreAdd', apis.fncFirestoreAdd);
+app.post('/fireStoreGet', apis.fncFirestoreGet);
+app.post('/fireStoreWhere', apis.fncFirestoreWhere);
 var confPort = process.env.PORT || 3000;
 var server = app.listen(confPort, function () {
     app.use(express.static(`${__dirname}/../public`));
     const port = server.address().port;
     console.log('Listening in port', port);
 });
+
