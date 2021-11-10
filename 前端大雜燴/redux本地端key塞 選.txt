@@ -1,0 +1,1 @@
+ state.members[action.payload.groupId] = action.payload.members

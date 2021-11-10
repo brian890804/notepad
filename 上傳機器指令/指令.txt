@@ -1,0 +1,5 @@
+sudo docker-compose down 關閉機器
+sudo docker-compose up --build -d 上傳新檔案並背景執行
+
+後端:gradlew build
+前端:yarn run build
