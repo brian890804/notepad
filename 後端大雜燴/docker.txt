@@ -1,0 +1,17 @@
+$sudo dockewr build -t name:latest . 建立image
+
+$sudo docker ps 查container
+
+$sudo docker ls 查image
+
+$sudo docker rm ?
+
+$sudo docker image rm ?
+
+$sudo docker run 啟
+
+$sudo docker ps 看目前執行
+
+$sudo docker exec -it {id} /bin/bash 遠端指令
+
+-d 背景執行 -p 指向卓號

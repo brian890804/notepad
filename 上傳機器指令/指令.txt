@@ -3,3 +3,4 @@ sudo docker-compose up --build -d 上傳新檔案並背景執行
 
 後端:gradlew build
 前端:yarn run build
+刪除 rm -rf *

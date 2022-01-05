@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+import { Card, Accordion } from "react-bootstrap";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+
+export function DashBoardCard({ header, body }) {
+  return (
+    <Accordion defaultActiveKey="0">
+      <Card style={Style.Card}>
+        <Header header={header} />
+        <Body body={body} />
+      </Card>
+    </Accordion>
+  );
+}
+
+function Header({ header }) {
+  return (
+    <Card.Header style={Style.Header}>
+      <div style={Style.Text}>
+        <b>{header}</b><ClickToggle />
+      </div>
+      
+    </Card.Header>
+  );
+}
+
+function Body({ body }) {
+  return (
+    <Accordion.Collapse eventKey="0">
+      <Card.Body style={Style.Body}>{body}</Card.Body>
+    </Accordion.Collapse>
+  );
+}
+
+function ClickToggle() {
+  const [isFold, setIsFold] = useState(false);
+  return (
+    <Accordion.Toggle
+      eventKey="0"
+      style={Style.Accordion}
+      onClick={() => setIsFold(!isFold)}
+    >
+      {isFold ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+    </Accordion.Toggle>
+  );
+}
+//json
+const Style = {
+  Card: {
+    width: "410px",
+    marginTop: "10px",
+    marginBottom: "10px",
+    borderRadius: "3%",
+    backgroundColor: "white",
+  },
+   
+  Text: { marginLeft: "150px" },
+  Accordion: {
+    marginLeft: "150px",
+    backgroundColor: "white",
+    border: "0",
+  },
+  Body: { height: "160px", overflow: "auto" },
+};

@@ -1,0 +1,29 @@
+export const login = (request) => async (
+  dispatch
+) => {
+  let response = await requestFromServer.login(request);
+  let res = response.data;
+  let aivToken;
+  if (res.code != '00000') {
+    dispatch(loginActions.login({ error: res.message }));
+    return;
+  }
+  aivToken = res.data.token
+  response = await requestFromServer.getThirdCertificationToken();
+  res = response.data;
+  if (res.code != '00000') {
+    dispatch(loginActions.login({ error: res.message }));
+    return;
+  }
+  response = await requestFromServer.patchThirdCertificationToken(res.data.token, aivToken);
+  res = response.data;
+  if (res.code != '00000') {
+    dispatch(loginActions.login({ error: res.message }));
+    return;
+  }
+
+  response = await requestFromServer.createSessionByAivSocial(res.data.token)
+  res = response.data;
+  dispatch(loginActions.login({ session: res.data }));
+  console.log('login success');
+};
