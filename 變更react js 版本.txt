@@ -1,0 +1,2 @@
+npm install --save react@16.11.0指定
+npm install --save react@latest最新

@@ -1,0 +1,2 @@
+先在APP畫面放入<AlertDialog/>
+AlertDialog.show("提示","登入時效已過，請重新登入");
