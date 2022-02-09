@@ -1,0 +1,2 @@
+Alert
+https://sweetalert2.github.io/#frameworks-integrations

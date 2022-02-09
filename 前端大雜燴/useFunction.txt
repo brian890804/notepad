@@ -1,0 +1,10 @@
+import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom'
+export function useSwalAlert() { //名稱面前要加USE
+  const history = useHistory();
+  const alertSuccess = () => Swal.fire({ icon: 'success', title: '成功', text: '寄送成功', isConfirmed: history.go(0) });
+  const alertError = () => Swal.fire({ icon: 'error', title: '錯誤', text: '寄送失敗' });
+  return { alertSuccess, alertError };
+}
+引用葉面
+const { alertError, alertSuccess} = useSwalAlert();

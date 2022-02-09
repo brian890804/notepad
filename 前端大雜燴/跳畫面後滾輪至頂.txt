@@ -1,0 +1,10 @@
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  const scroll = () => {
+    document.getElementById('scroller').scrollTo({ top: 0, behavior: 'smooth' })
+  }
+  useEffect(() => {
+    scroll()
+  }, [pathname])
+  return null;
+}
