@@ -1,10 +1,8 @@
 import './App.css';
-import Excel from './Screen/Excel';
+import Excel from './Screen/Excel/Excel';
 function App() {
   return (
-    <div className="App">
-      <Excel />
-    </div>
+    <Excel/>
   );
 }
 
