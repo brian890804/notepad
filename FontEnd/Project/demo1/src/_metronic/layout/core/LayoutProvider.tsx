@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState} from 'react'
 import { DefaultLayoutConfig } from './DefaultLayoutConfig'
 import {
   getEmptyCssClasses,
@@ -29,27 +29,12 @@ const LayoutContext = createContext<LayoutContextModel>({
   setLayout: (config: LayoutSetup) => { },
 })
 
-const enableSplashScreen = () => {
-  const splashScreen = document.getElementById('splash-screen')
-  if (splashScreen) {
-    splashScreen.style.setProperty('display', 'flex')
-  }
-}
-
-const disableSplashScreen = () => {
-  const splashScreen = document.getElementById('splash-screen')
-  if (splashScreen) {
-    splashScreen.style.setProperty('display', 'none')
-  }
-}
-
 const LayoutProvider: React.FC = ({ children }) => {
   const [config, setConfig] = useState(LayoutSetup.config)
   const [classes, setClasses] = useState(LayoutSetup.classes)
   const [attributes, setAttributes] = useState(LayoutSetup.attributes)
   const [cssVariables, setCSSVariables] = useState(LayoutSetup.cssVariables)
   const setLayout = (_themeConfig: Partial<ILayout>) => {
-    enableSplashScreen()
     const bodyClasses = Array.from(document.body.classList)
     bodyClasses.forEach((cl) => document.body.classList.remove(cl))
     LayoutSetup.updatePartialConfig(_themeConfig)
@@ -66,12 +51,6 @@ const LayoutProvider: React.FC = ({ children }) => {
     cssVariables,
     setLayout,
   }
-
-  useEffect(() => {
-    setTimeout(() => {
-      disableSplashScreen()
-    }, 3000)
-  }, [])
  return  <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider> 
 }
 
