@@ -28,7 +28,6 @@ const DefaultTitle: FC = () => {
         </h1>
       )}
       {/* end::Title */}
-
       {pageBreadcrumbs &&
         pageBreadcrumbs.length > 0 &&
         config.pageTitle &&
@@ -62,5 +61,4 @@ const DefaultTitle: FC = () => {
     </div>
   )
 }
-
 export {DefaultTitle}

@@ -1,15 +1,15 @@
 import React from 'react'
-import {MenuItem} from './MenuItem'
-import {MenuInnerWithSub} from './MenuInnerWithSub'
-import {MegaMenu} from './MegaMenu'
-import {useIntl} from 'react-intl'
+import { MenuItem } from './MenuItem'
+import { MenuInnerWithSub } from './MenuInnerWithSub'
+import { MegaMenu } from './MegaMenu'
+import { useIntl } from 'react-intl'
 
 export function MenuInner() {
   const intl = useIntl()
   return (
     <>
-      <MenuItem title={intl.formatMessage({id: 'MENU.DASHBOARD'})} to='/dashboard' />
-      <MenuItem title={intl.formatMessage({id: 'MENU.REVISIONDASHBOARD'})} to='/builder' />
+      <MenuItem title={intl.formatMessage({ id: 'MENU.DASHBOARD' })} to='/dashboard' />
+      <MenuItem title={intl.formatMessage({ id: 'MENU.REVISIONDASHBOARD' })} to='/builder' />
       <MenuInnerWithSub
         title='Crafted'
         to='/crafted'
@@ -51,20 +51,6 @@ export function MenuInner() {
             <MenuItem to='/crafted/pages/wizards/vertical' title='Vertical' hasBullet={true} />
           </MenuInnerWithSub>
         </MenuInnerWithSub>
-
-        {/* ACCOUNT */}
-        <MenuInnerWithSub
-          title='Accounts'
-          to='/crafted/accounts'
-          fontIcon='bi-person'
-          hasArrow={true}
-          menuPlacement='right-start'
-          menuTrigger={`{default:'click', lg: 'hover'}`}
-        >
-          <MenuItem to='/crafted/account/overview' title='Overview' hasBullet={true} />
-          <MenuItem to='/crafted/account/settings' title='Settings' hasBullet={true} />
-        </MenuInnerWithSub>
-
         {/* ERRORS */}
         <MenuInnerWithSub
           title='Errors'
@@ -80,7 +66,7 @@ export function MenuInner() {
 
         {/* Widgets */}
         <MenuInnerWithSub
-          title='Widgets'
+          title={intl.formatMessage({ id: 'MENU.WIDGETS' })}
           to='/crafted/widgets'
           fontIcon='bi-layers'
           hasArrow={true}

@@ -13,7 +13,7 @@ const MetronicSplashScreenContext = createContext<Dispatch<SetStateAction<number
 )
 
 const MetronicSplashScreenProvider: FC = ({children}) => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0) //eslint-disable-line
   return (
     <MetronicSplashScreenContext.Provider value={setCount}>
       {children}

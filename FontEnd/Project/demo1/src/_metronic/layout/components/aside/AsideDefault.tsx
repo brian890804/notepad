@@ -83,7 +83,7 @@ const AsideDefault: FC = () => {
           data-bs-dismiss-='click'
           title='Check out the complete documentation with over 100 components'
         >
-          <span className='btn-label'>Docs & Components</span>
+          <span className='btn-label'>文件組件</span>
           <span className='svg-icon btn-icon svg-icon-2'>
             <KTSVG path='/media/icons/duotune/general/gen005.svg' />
           </span>
