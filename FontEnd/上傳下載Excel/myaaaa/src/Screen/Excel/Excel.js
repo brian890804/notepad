@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import XLSX from "xlsx";
 import InputFiles from "react-input-files";
 import { saveAs } from "file-saver";
@@ -20,12 +20,6 @@ export default function Excel() {
     const DownloadExcel = () => {
         saveAs(ExcelRead, `excel - ${new Date()}.xlsx`)
     }
-    // useEffect(()=>{
-    //         if(ExcelRead&&!Rows){
-    //             setAlert({ title: '上傳內容錯誤請上傳文字檔案', type: 'error' })
-    //         }
-    //         console.log(ExcelRead,Rows,'s')
-    // },[ExcelRead],[Rows])
     return (
         <div className={classes.root}>
             <PromptModal request={Alert} />
@@ -37,7 +31,7 @@ export default function Excel() {
                 >
                     <Grid container alignItems='center' justifyContent="center" style={{ backgroundColor: '#3C3C3C', borderRadius: 10 }}>
                         <Grid item xs={12} sx={{ p: 2, textAlign: 'left' }}  >
-                            <InputFiles accept=".xlsx, .xls" onChange={(files) => { onImportExcel({ files, Rows, setRows, setExcelRead, setAlert }); setAlert('');console.log(files[0],'filesfiles') }}>
+                            <InputFiles accept=".xlsx, .xls" onChange={(files) => { onImportExcel({ files, Rows, setRows, setExcelRead, setAlert }); setAlert(''); }}>
                                 <Tooltip title={"上傳檔案"} >
                                     <NavigationIcon fontSize="large" style={{ cursor: 'pointer' }} color='primary' />
                                 </Tooltip>
@@ -68,12 +62,11 @@ function s2ab(s) {
 
 function onImportExcel({ files, setRows, setExcelRead }) {
     const fileReader = new FileReader();
-    ExcelRenderer(files[0], (err, resp) => {
-        if (resp.rows) {
+    ExcelRenderer(files[0], (error, resp) => {
+        if (resp?.rows) {
             setRows(resp.rows)
-        } else {
         }
-    });
+    })
     fileReader.onload = event => {
         const { result } = event.target;
         const workbook = XLSX.read(result, { type: 'binary' });
