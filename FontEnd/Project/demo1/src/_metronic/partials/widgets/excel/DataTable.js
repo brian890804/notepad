@@ -27,7 +27,7 @@ export default function DataTable({ Rows }) {
                                             return (
                                                 <TableCell align="right" key={index} style={{ color: 'white'}}>{row}</TableCell>
                                             )
-                                        }
+                                        }return null
                                     })
                                 }
                             </TableRow>
