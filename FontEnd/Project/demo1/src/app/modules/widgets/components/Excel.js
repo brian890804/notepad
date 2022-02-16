@@ -35,8 +35,7 @@ export default function Excel() {
                                         </Tooltip>
                                     </InputFiles>
                                     <Tooltip title={Rows ? "下載檔案" : "請先上傳檔案"}  >
-                                        {/* <span style={{ marginLeft: 20 }} onClick={() => Rows ? DownloadExcel() : setAlert({ title: '請先點選左側藍色上傳檔案鈕', type: 'error' })}> */}
-                                        <span style={{ marginLeft: 20 }} onClick={() => DownloadExcel()}>
+                                        <span style={{ marginLeft: 20 }} onClick={() => Rows ? DownloadExcel() : setAlert({ title: '請先點選左側藍色上傳檔案鈕', type: 'error' })}>
                                             <FileDownloadIcon fontSize="large" style={{ cursor: Rows ? 'pointer' : '' }} color={Rows && 'success'} />
                                         </span>
                                     </Tooltip>
@@ -65,14 +64,14 @@ function onImportExcel({ files, setRows, setExcelRead }) {
     const fileReader = new FileReader();
     fileReader.onload = event => {
         const { result } = event.target;
-        let workbook = XLSX.read(result, { type: 'array', sheetStubs: true });
+        let workbook = XLSX.read(result, { type: 'array', sheetStubs: true });//解析文件成陣列
         const wsname = workbook.SheetNames[0];
         const ws = workbook.Sheets[wsname];
         const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
         setRows(data);
-        workbook = XLSX.read(result, { type: 'binary'});
+        workbook = XLSX.read(result, { type: 'binary'});//解析文件
         var wopts = { bookType: 'xlsx', type: 'binary' };
-        var wbout = XLSX.write(workbook, wopts);
+        var wbout = XLSX.write(workbook, wopts);//重新寫入為工作表
         setExcelRead(new Blob([s2ab(wbout)], { type: "application/octet-stream" }))
     };
     fileReader.readAsArrayBuffer(files[0]);

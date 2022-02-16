@@ -9,8 +9,8 @@ import Paper from '@mui/material/Paper';
 export default function DataTable({ Rows }) {
     if (Rows) {
         return (
-            <TableContainer component={Paper} elevation={3} style={{ maxHeight: 350, borderTopLeftRadius: 0, minWidth: 600, overflowY: 'scroll' }} >
-                <Table aria-label="simple table">
+            <TableContainer component={Paper} elevation={3} style={{ maxHeight: 400, borderTopLeftRadius: 0, minWidth: 600, overflowY: 'scroll' }} >
+                <Table >
                     <TableBody style={{ backgroundColor: '#272727' }}>
                         {Rows.map((row, index) => (
                             <TableRow
@@ -19,7 +19,6 @@ export default function DataTable({ Rows }) {
                             >  
                                 {
                                     row.map((col, index) => {
-                                        console.log(col,'cols')
                                         return <TableCell key={index} style={{ color: 'white' }}>{col}</TableCell>
                                     })
                                 }
