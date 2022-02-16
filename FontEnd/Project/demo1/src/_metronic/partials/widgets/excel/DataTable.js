@@ -16,18 +16,11 @@ export default function DataTable({ Rows }) {
                             <TableRow
                                 key={index}
                                 style={{ color: 'white', backgroundColor: index % 2 === 0 ? '#272727' : '#3C3C3C' }}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row" style={{ color: 'white' }}>
-                                    {row[0]}
-                                </TableCell>
+                            >  
                                 {
-                                    row.map((row, index) => {
-                                        if (index > 0) {
-                                            return (
-                                                <TableCell align="right" key={index} style={{ color: 'white'}}>{row}</TableCell>
-                                            )
-                                        }return null
+                                    row.map((col, index) => {
+                                        console.log(col,'cols')
+                                        return <TableCell key={index} style={{ color: 'white' }}>{col}</TableCell>
                                     })
                                 }
                             </TableRow>

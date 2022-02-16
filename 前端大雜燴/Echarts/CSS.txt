@@ -1,0 +1,22 @@
+.banner{
+    width: 100;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .MuiToolbar-root.MuiToolbar-dense.MuiToolbar-gutters{
+    background-color:gray;
+  }
+  .MuiTabPanel-root{
+    display: none;
+  }
+  .TitleImg{
+  cursor: pointer;
+  }
+  .Button{
+    cursor: pointer;
+  }
+

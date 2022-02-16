@@ -10,7 +10,7 @@ type Props = {
   basename: string
 }
 const App: React.FC<Props> = ({ basename }) => {
-  const [BGControl, setBGContorl] = useState(true);
+  const [BGControl, setBGContorl] = useState(false);
   useEffect(() => {
     setTimeout(() => setBGContorl(false), 5000)
   }, [])
