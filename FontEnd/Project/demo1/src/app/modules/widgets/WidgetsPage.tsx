@@ -8,6 +8,8 @@ import { Tables } from './components/Tables'
 import { Mixed } from './components/Mixed'
 import { Statistics } from './components/Statistics'
 import Excel from './components/Excel'
+import MyCarousel from './components/MyCarousel'
+import MyTable from './components/MyTable'
 const widgetsBreadCrumbs: Array<PageLink> = [
   {
     title: 'Widgets',
@@ -26,9 +28,16 @@ const widgetsBreadCrumbs: Array<PageLink> = [
 const WidgetsPage: React.FC = () => {
   return (
     <Switch>
-       <Route path='/crafted/widgets/excel'>
+      <Route path='/crafted/widgets/excel'>
         <PageTitle breadcrumbs={widgetsBreadCrumbs}>Excels</PageTitle>
         <Excel />
+      </Route>
+      <Route path='/crafted/widgets/carousel'>
+        <MyCarousel />
+      </Route>
+      <Route path='/crafted/widgets/table'>
+        <PageTitle breadcrumbs={widgetsBreadCrumbs}>Table</PageTitle>
+        <MyTable />
       </Route>
       <Route path='/crafted/widgets/lists'>
         <PageTitle breadcrumbs={widgetsBreadCrumbs}>Lists</PageTitle>

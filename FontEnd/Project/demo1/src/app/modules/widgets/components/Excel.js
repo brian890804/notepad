@@ -19,7 +19,7 @@ export default function Excel() {
     return (
         <div className='row g-12 g-xl-12'>
             <div className='col-xl-12'>
-                <div className='card card-xl-stretch mb-xl-8'>
+                <div className='card card-xl-stretch mb-xl-8' style={{minHeight:'300px'}}>
                     <div className='card-body '>
                         <PromptModal request={Alert} />
                         <Grow
@@ -27,7 +27,7 @@ export default function Excel() {
                             style={{ transformOrigin: '0 0 0' }}
                             {...(true ? { timeout: 1000 } : {})}
                         >
-                            <Grid container alignItems='center' justifyContent="center" style={{ backgroundColor: '#3C3C3C', borderRadius: 10 }}>
+                            <Grid container alignItems='center' justifyContent="center" sx={{ backgroundColor: '#3C3C3C', borderRadius: 2 }}>
                                 <Grid item xs={12} sx={{ p: 2, textAlign: 'left' }}  >
                                     <InputFiles accept=".xlsx, .xls" onChange={(files) => { onImportExcel({ files, Rows, setRows, setExcelRead, setAlert }); setAlert(''); }}>
                                         <Tooltip title={"上傳檔案"} >
@@ -36,7 +36,7 @@ export default function Excel() {
                                     </InputFiles>
                                     <Tooltip title={Rows ? "下載檔案" : "請先上傳檔案"}  >
                                         <span style={{ marginLeft: 20 }} onClick={() => Rows ? DownloadExcel() : setAlert({ title: '請先點選左側藍色上傳檔案鈕', type: 'error' })}>
-                                            <FileDownloadIcon fontSize="large" style={{ cursor: Rows ? 'pointer' : '' }} color={Rows && 'success'} />
+                                            <FileDownloadIcon fontSize="large" sx={{ cursor: Rows ? 'pointer' : '' }} color={Rows && 'success'} />
                                         </span>
                                     </Tooltip>
                                 </Grid>

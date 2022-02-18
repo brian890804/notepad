@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {FC} from 'react'
-import {Link} from 'react-router-dom'
+import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import clsx from 'clsx'
-import {useLayout} from '../../core'
-import {KTSVG, toAbsoluteUrl} from '../../../helpers'
-import {AsideMenu} from './AsideMenu'
+import { useLayout } from '../../core'
+import { KTSVG, toAbsoluteUrl } from '../../../helpers'
+import { AsideMenu } from './AsideMenu'
 
 const AsideDefault: FC = () => {
-  const {config, classes} = useLayout()
-  const {aside} = config
+  const { config, classes } = useLayout()
+  const { aside } = config
 
   return (
     <div
@@ -24,14 +24,16 @@ const AsideDefault: FC = () => {
       data-kt-drawer-toggle='#kt_aside_mobile_toggle'
     >
       {/* begin::Brand */}
-      <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
+      <div className='aside-logo' id='kt_aside_logo'>
         {/* begin::Logo */}
+        <div className='w-auto'/>
         {aside.theme === 'dark' && (
           <Link to='/dashboard'>
             <img
               alt='Logo'
-              className='h-25px logo'
-              src={toAbsoluteUrl('/media/logos/logo-1-dark.svg')}
+              style={{textAlign:'center'}}
+              className='h-65px logo align-self-center'
+              src={toAbsoluteUrl('/media/logos/ANKLES_LOGO.png')}
             />
           </Link>
         )}
@@ -39,8 +41,8 @@ const AsideDefault: FC = () => {
           <Link to='/dashboard'>
             <img
               alt='Logo'
-              className='h-25px logo'
-              src={toAbsoluteUrl('/media/logos/logo-1.svg')}
+              className='h-70px logo'
+              src={toAbsoluteUrl('/media/logos/ANKLES_LOGO.jpeg')}
             />
           </Link>
         )}
@@ -94,4 +96,4 @@ const AsideDefault: FC = () => {
   )
 }
 
-export {AsideDefault}
+export { AsideDefault }

@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import {useFormik} from 'formik'
+import { Link } from 'react-router-dom'
+import { useFormik } from 'formik'
 import * as auth from '../redux/AuthRedux'
-import {login} from '../redux/AuthCRUD'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+import { login } from '../redux/AuthCRUD'
+import { toAbsoluteUrl } from '../../../../_metronic/helpers'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -38,11 +38,11 @@ export function Login() {
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
+    onSubmit: (values, { setStatus, setSubmitting }) => {
       setLoading(true)
       setTimeout(() => {
         login(values.email, values.password)
-          .then(({data: {api_token}}) => {
+          .then(({ data: { api_token } }) => {
             setLoading(false)
             dispatch(auth.actions.login(api_token))
           })
@@ -95,7 +95,7 @@ export function Login() {
           {...formik.getFieldProps('email')}
           className={clsx(
             'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            { 'is-invalid': formik.touched.email && formik.errors.email },
             {
               'is-valid': formik.touched.email && !formik.errors.email,
             }
@@ -123,7 +123,7 @@ export function Login() {
             <Link
               to='/auth/forgot-password'
               className='link-primary fs-6 fw-bolder'
-              style={{marginLeft: '5px'}}
+              style={{ marginLeft: '5px' }}
             >
               Forgot Password ?
             </Link>
@@ -164,7 +164,7 @@ export function Login() {
         >
           {!loading && <span className='indicator-label'>Continue</span>}
           {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
+            <span className='indicator-progress' style={{ display: 'block' }}>
               Please wait...
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
