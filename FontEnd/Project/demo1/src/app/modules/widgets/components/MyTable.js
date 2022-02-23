@@ -4,8 +4,13 @@ import makeData from './makeData'
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import Grow from '@mui/material/Grow';
+import Grid from '@mui/material/Grid';
+import useStoreModal from '../../../../_metronic/alert/PromptModal'
 let random = 0
 function App() {
+    const {myTablePrompt}=useStoreModal();
+    myTablePrompt();
     const columns = useMemo(
         () => [
             {
@@ -78,18 +83,32 @@ function App() {
         setTitle(newData)
     }
     return (
-        <>
-            <span style={{ display:'flex',alignItems:'center', justifyContent:'center' }}>
-                <span style={{margin:5}}><Button variant="contained" startIcon={<DeleteIcon />} onClick={resetData}>重設資料</Button></span>
-                <span><Button variant="contained" color="success" startIcon={<AddIcon />} onClick={() => addData()}>新增欄位</Button></span>
-            </span>
-            <ReactTable
-                columns={title}
-                data={data}
-                updateMyData={updateMyData}
-                skipPageReset={skipPageReset}
-            />
-        </>
+        <div className='row g-12 g-xl-12'>
+            <div className='col-xl-12'>
+                <div className='card card-xl-stretch mb-xl-8' style={{ minHeight: '300px' }}>
+                    <div className='card-body '>
+                        <Grow
+                            in={true}
+                            sx={{ transformOrigin: '0 0 0' }}
+                            {...(true ? { timeout: 1000 } : {})}
+                        >
+                            <Grid container alignItems='center' justifyContent="center" sx={{ backgroundColor: '#3C3C3C', borderRadius: 2 }}>
+                                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span style={{ margin: 5 }}><Button variant="contained" startIcon={<DeleteIcon />} onClick={resetData}>重設資料</Button></span>
+                                    <span><Button variant="contained" color="success" startIcon={<AddIcon />} onClick={() => addData()}>新增欄位</Button></span>
+                                </span>
+                                <ReactTable
+                                    columns={title}
+                                    data={data}
+                                    updateMyData={updateMyData}
+                                    skipPageReset={skipPageReset}
+                                />
+                            </Grid>
+                        </Grow>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

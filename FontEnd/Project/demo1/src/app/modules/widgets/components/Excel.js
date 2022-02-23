@@ -3,25 +3,27 @@ import XLSX from "xlsx";
 import InputFiles from "react-input-files";
 import { saveAs } from "file-saver";
 import Grid from '@mui/material/Grid';
-import PromptModal from '../../../../_metronic/alert/PromptModal'
 import NavigationIcon from '@mui/icons-material/Navigation';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import Grow from '@mui/material/Grow';
 import DataTable from '../../../../_metronic/partials/widgets/excel/DataTable';
 import Tooltip from '@mui/material/Tooltip';
+import useStoreModal from '../../../../_metronic/alert/PromptModal'
 export default function Excel() {
     const [ExcelRead, setExcelRead] = useState('');
     const [Rows, setRows] = useState();
-    const [Alert, setAlert] = useState({ title: 'Excel上傳、預覽、下載頁面，請上傳Excel', type: 'success' });
+    const { excelPrompt, excelUploadPrompt,excelUploadSuccessPrompt } = useStoreModal();
     const DownloadExcel = () => {
         saveAs(ExcelRead, `excel - ${new Date()}.xlsx`)
     }
+    React.useEffect(() => {
+        excelPrompt();
+    }, [])//eslint-disable-line
     return (
         <div className='row g-12 g-xl-12'>
             <div className='col-xl-12'>
-                <div className='card card-xl-stretch mb-xl-8' style={{minHeight:'300px'}}>
+                <div className='card card-xl-stretch mb-xl-8' style={{ minHeight: '300px' }}>
                     <div className='card-body '>
-                        <PromptModal request={Alert} />
                         <Grow
                             in={true}
                             style={{ transformOrigin: '0 0 0' }}
@@ -29,13 +31,13 @@ export default function Excel() {
                         >
                             <Grid container alignItems='center' justifyContent="center" sx={{ backgroundColor: '#3C3C3C', borderRadius: 2 }}>
                                 <Grid item xs={12} sx={{ p: 2, textAlign: 'left' }}  >
-                                    <InputFiles accept=".xlsx, .xls" onChange={(files) => { onImportExcel({ files, Rows, setRows, setExcelRead, setAlert }); setAlert(''); }}>
+                                    <InputFiles accept=".xlsx, .xls" onChange={(files) => { onImportExcel({ files, Rows, setRows, setExcelRead});excelUploadSuccessPrompt() }}>
                                         <Tooltip title={"上傳檔案"} >
                                             <NavigationIcon fontSize="large" style={{ cursor: 'pointer' }} color='primary' />
                                         </Tooltip>
                                     </InputFiles>
                                     <Tooltip title={Rows ? "下載檔案" : "請先上傳檔案"}  >
-                                        <span style={{ marginLeft: 20 }} onClick={() => Rows ? DownloadExcel() : setAlert({ title: '請先點選左側藍色上傳檔案鈕', type: 'error' })}>
+                                        <span style={{ marginLeft: 20 }} onClick={() => Rows ? DownloadExcel() : excelUploadPrompt()}>
                                             <FileDownloadIcon fontSize="large" sx={{ cursor: Rows ? 'pointer' : '' }} color={Rows && 'success'} />
                                         </span>
                                     </Tooltip>
@@ -67,9 +69,9 @@ function onImportExcel({ files, setRows, setExcelRead }) {
         let workbook = XLSX.read(result, { type: 'array', sheetStubs: true });//解析文件成陣列
         const wsname = workbook.SheetNames[0];
         const ws = workbook.Sheets[wsname];
-        const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
+        const data = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
         setRows(data);
-        workbook = XLSX.read(result, { type: 'binary'});//解析文件
+        workbook = XLSX.read(result, { type: 'binary' });//解析文件
         var wopts = { bookType: 'xlsx', type: 'binary' };
         var wbout = XLSX.write(workbook, wopts);//重新寫入為工作表
         setExcelRead(new Blob([s2ab(wbout)], { type: "application/octet-stream" }))
