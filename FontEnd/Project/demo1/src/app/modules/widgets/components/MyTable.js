@@ -7,9 +7,8 @@ import AddIcon from '@mui/icons-material/Add';
 import Grow from '@mui/material/Grow';
 import Grid from '@mui/material/Grid';
 import useStoreModal from '../../../../_metronic/alert/PromptModal'
-let random = 0
 function App() {
-    const {myTablePrompt}=useStoreModal();
+    const { myTablePrompt } = useStoreModal();
     myTablePrompt();
     const columns = useMemo(
         () => [
@@ -74,7 +73,7 @@ function App() {
     }, [data])
     const resetData = () => setData(originalData)
     const addData = () => {
-        random = random + 1
+        let random = Math.random()
         let newData = [...title]
         newData[1].columns.push({
             Header: 'test' + random.toString(),

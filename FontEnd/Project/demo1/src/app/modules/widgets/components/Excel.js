@@ -17,7 +17,7 @@ export default function Excel() {
         saveAs(ExcelRead, `excel - ${new Date()}.xlsx`)
     }
     React.useEffect(() => {
-        excelPrompt();
+        excelPrompt()
     }, [])//eslint-disable-line
     return (
         <div className='row g-12 g-xl-12'>
