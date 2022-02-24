@@ -9,7 +9,7 @@ export default function CustomerForm() {
   const [control, setControl] = useState(false);
   function createData(request, index) {
     let data = columns;
-    data.push({ name: request, options: { filter: index <= 0 ? true : false } }) //只有第一個欄位可以篩選
+    data.push({ name: request, options: { filter: true } }) //篩選條件可用index設定
     setColumns(data)
   }
   React.useEffect(() => {
@@ -38,7 +38,12 @@ export default function CustomerForm() {
 const options = {
   filterType: 'dropdown',
   responsive: 'vertical',
+  elevation: 10,
   tableBodyHeight: (window.innerHeight / 2.2).toString(),
+  draggableColumns: { enabled: true },//欄位拖曳
+  onDownload: (buildHead, buildBody, columns, data) => {//不加這個中文會亂碼
+    return "\uFEFF" + buildHead(columns) + buildBody(data)
+  },
   customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage, textLabels) => {
     return (
       <CustomFooter
@@ -69,7 +74,7 @@ const options = {
       next: "下一頁",
       previous: "上一頁",
       rowsPerPage: "總頁數:",
-      displayRows: "in",
+      displayRows: "共",
     },
     toolbar: {
       search: "搜尋",
@@ -92,7 +97,6 @@ const options = {
 };
 
 function CustomTableBodyFooterRender(opts) {
-  console.dir(opts);
   let avgAge =
     opts.data.reduce((accu, item) => {
       return accu + item.data[3];
@@ -102,10 +106,8 @@ function CustomTableBodyFooterRender(opts) {
     opts.data.reduce((accu, item) => {
       return accu + item.data[4];
     }, 0) / opts.data.length;
-
   avgAge = Math.round(avgAge);
   avgSalary = Math.round(avgSalary);
-  console.log(opts.columns, 'opts.columns')
   return (
     <TableFooter >
       <TableRow>
@@ -159,7 +161,7 @@ function CustomFooter(props) { //目前沒有客製化 可用可不用
             rowsPerPage={rowsPerPage}
             page={page}
             labelRowsPerPage={textLabels.rowsPerPage}
-            labelDisplayedRows={({ from, to, count }) => `${from}-${to} ${textLabels.displayRows} ${count}`}
+            labelDisplayedRows={({ from, to, count }) => `${from}-${to}筆 ${textLabels.displayRows} ${count}筆`}
             backIconButtonProps={{
               'aria-label': textLabels.previous,
             }}
