@@ -1,7 +1,7 @@
 {
   "name": "demo1",
   "version": "8.0.35",
-  "private": true,
+  "private": false,
   "homepage": "/",
   "dependencies": {
     "@emotion/react": "^11.7.1",
