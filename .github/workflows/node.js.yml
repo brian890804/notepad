@@ -44,7 +44,7 @@ jobs:
           PASSPHRASE: 1qazCDE#5tgb
           script: | 
             cd ../../.././opt/test/notepad
-            git pull git@git@github.com:brian890804/notepad.git
+            git pull git@github.com:brian890804/notepad.git
           #docker-compose up --build -d
           #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
 
