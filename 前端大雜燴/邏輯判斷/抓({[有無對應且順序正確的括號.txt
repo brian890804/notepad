@@ -1,0 +1,28 @@
+var isValid = function(s) {
+    let stack=[];
+    for(let chr of s){
+        if(chr=='('||chr=='{'||chr=='['){
+            stack.push(chr);
+        }else{
+            let tmp=stack.pop();
+            switch(chr){
+                case ')':
+                    if(tmp!='(') 
+                        return false 
+                        break;
+                case '}':
+                    if(tmp!='{') 
+                        return false 
+                        break;
+                case ']':
+                    if(tmp!='[')
+                        return false 
+                         break;
+                default :
+                    return false
+                    break;
+            }
+        }
+    }
+       return stack.length == 0
+};

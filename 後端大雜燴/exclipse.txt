@@ -1,7 +1,9 @@
 -----------------------------------
 @RestController 標記為Controller
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE) 定義回傳為JOSN格式
-
+@PathVariable 路徑變數
+@RequestParam 問號後面參數
+@RequestBody 身體
 @PostConstruct在伺服器載入Servlet的時候執行，並且只會被伺服器執行一次
 --------------------------------------
 Project Lombok 開發套件
