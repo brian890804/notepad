@@ -11,15 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SYSTEM_CODE;
-import com.example.model.AccountModel;
 import com.example.server.AccountRepository;
 import com.example.system.RestApiResponse;
+
+import database.AccountModel;
 
 @RestController
 public class AccountController {
 	@Autowired
 	private AccountRepository accountRepository;
-	@PostMapping("/test")
+
+	@PostMapping("/register")
+	public RestApiResponse register(@RequestBody String account, String password, String name) {
+		try {
+			AccountModel accountModel = new AccountModel();
+			accountModel.setAccount(account);
+			accountModel.setPassword(password);
+			accountModel.setName(name);
+			accountRepository.save(accountModel);
+			return new RestApiResponse(SYSTEM_CODE.ERROR.name(), "error");
+		} catch (RuntimeException e) {
+			e.getMessage();
+			return null;
+		}
+
+	}
+	@PostMapping("/login")
 	public RestApiResponse Login(@RequestBody AccountModel accountModel) {
 		Optional<AccountModel> account;
 		try {
@@ -36,9 +53,10 @@ public class AccountController {
 		
 	}
     @GetMapping
-    public Map hello() {
-        Map map = new HashMap();
-        map.put("say", "hello");
+	public Map<Integer, String> hello() {
+		Map<Integer, String> map = new HashMap<Integer, String>();
+		map.put(1, "hello");
+		map.put(2, "test");
         return map;
     }
 }

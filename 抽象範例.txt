@@ -1,0 +1,56 @@
+class Shape{
+  function Area(){
+    console.log('not implement')
+  }
+}
+
+class Rectangle extends Shape{
+  constructor(width,height){
+    this.width=width
+    this.height=height
+  }
+  function Area(){
+    return this.width*this.height
+  }
+}
+class Circle  extends Shape{
+  constructor(width,height){
+    this.width=width
+    this.height=height
+  }
+   function Area(){
+      return (this.width*this.height)*3.14
+  }
+}
+class Triangle  extends Shape{
+  constructor(width,height){
+    this.width=width
+    this.height=height
+  }
+   function Area(){
+      return (this.width*this.height)/2
+  }
+}
+class Aa  extends Shape{
+  constructor(width,height){
+    this.width=width
+    this.height=height
+  }
+   function Area(){
+      return (this.width*this.height)/2
+  }
+}
+
+const Aa=new Aa();
+const Rectangle=new Rectangle(10,52);
+const Triangle=new Triangle(10,52);
+const Circle=new Circle(10,52);
+
+function getArea(Shape){
+  return  Shape.Area();
+}
+console.log(getArea(Rectangle));
+
+console.log(getArea(Triangle));
+console.log(getArea(Aa));
+console.log(getArea(Circle));
