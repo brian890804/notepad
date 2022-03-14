@@ -2,61 +2,69 @@ package com.example.api;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SYSTEM_CODE;
-import com.example.server.AccountRepository;
+import com.example.database.AccountModel;
+import com.example.database.SysUserDao;
+import com.example.database.SysUserRoleDao;
+import com.example.entity.SysUser;
+import com.example.entity.SysUserRole;
 import com.example.system.RestApiResponse;
-
-import database.AccountModel;
 
 @RestController
 public class AccountController {
 	@Autowired
-	private AccountRepository accountRepository;
-
+	private SysUserDao sysUserDao;
+	@Autowired
+	private SysUserRoleDao sysUserRoleDao;
 	@PostMapping("/register")
-	public RestApiResponse register(@RequestBody String account, String password, String name) {
+	public RestApiResponse register(@RequestBody AccountModel account) {
 		try {
-			AccountModel accountModel = new AccountModel();
-			accountModel.setAccount(account);
-			accountModel.setPassword(password);
-			accountModel.setName(name);
-			accountRepository.save(accountModel);
-			return new RestApiResponse(SYSTEM_CODE.ERROR.name(), "error");
+			SysUser sysUser = new SysUser();
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			sysUser.setName(account.getUsername());
+			sysUser.setPassword(encoder.encode(account.getPassword()));
+			sysUserDao.save(sysUser);
+
+			SysUserRole sysUserRole = new SysUserRole();
+			sysUserRole.setRoleid(2);
+			sysUserRole.setUserid(sysUser.getId());
+			sysUserRoleDao.save(sysUserRole);
+
+			return new RestApiResponse(SYSTEM_CODE.SUCCESS.name(), "Success");
 		} catch (RuntimeException e) {
 			e.getMessage();
-			return null;
+			return new RestApiResponse(SYSTEM_CODE.ERROR.name(), "Error");
 		}
 
 	}
-	@PostMapping("/login")
-	public RestApiResponse Login(@RequestBody AccountModel accountModel) {
-		Optional<AccountModel> account;
-		try {
-			account = accountRepository.findByAccountAndPassword(accountModel.getAccount(), accountModel.getPassword());
-			if(!account.isEmpty()) {
-				return new RestApiResponse(SYSTEM_CODE.SUCCESS.name(), account.get());
-			} else {
-				return new RestApiResponse(SYSTEM_CODE.ERROR.name(), "error");
-			}
-		} catch (RuntimeException e) {
-			e.getMessage();
-			return null;
-		}
-		
-	}
-    @GetMapping
+
+	@GetMapping
 	public Map<Integer, String> hello() {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		map.put(1, "hello");
 		map.put(2, "test");
-        return map;
-    }
+		return map;
+	}
+
+	@RequestMapping("/")
+	public String showHome() {
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		return "home.html";
+	}
+
+//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String printAdmin() {
+		return "ff";
+	}
 }

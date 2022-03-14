@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.database.SysUserRoleDao;
 import com.example.entity.SysUser;
 import com.example.entity.SysUserRole;
 import com.example.server.SysUserRoleService;
-
-import database.SysUserRoleDao;
 
 @Service
 public class SysUserRoleServiceimpl implements SysUserRoleService {

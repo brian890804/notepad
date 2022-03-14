@@ -11,12 +11,12 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "sys_user", catalog = "mybatis")
+@Table(name = "sys_user", catalog = "bear")
 
 public class SysUser {
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "name")
 	private String name;

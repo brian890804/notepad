@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "sys_role", catalog = "mybatis")
+@Table(name = "sys_role", catalog = "bear")
 public class SysRole {
 	@Id
 	@Column(name = "id")

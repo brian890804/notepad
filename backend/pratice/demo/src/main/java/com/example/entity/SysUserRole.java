@@ -9,14 +9,14 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "sys_user_role", catalog = "mybatis")
+@Table(name = "sys_user_role", catalog = "bear")
 public class SysUserRole {
 
 	@Id
-	@Column(name = "userid")
+	@Column(name = "user_id")
 
 	private Integer userid;
-	@Column(name = "roleid")
+	@Column(name = "role_id")
 	private Integer roleid;
 
 	public Integer getUserid() {

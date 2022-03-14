@@ -1,4 +1,4 @@
-package database;
+package com.example.database;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,11 +8,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "account")
+@Table(name = "sys_user")
 public class AccountModel {
 	@Id
-	private String account;
-	private String name;
+	private Integer id;
+	private String username;
 	private String password;
-	  
 }
