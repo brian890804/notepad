@@ -30,13 +30,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/register").permitAll()
 				.anyRequest().authenticated().and()
 				// 设置登陆页
-				.formLogin().loginPage("/login")
+				.formLogin().disable()
 				// 设置登陆成功页
-				.defaultSuccessUrl("/").permitAll()
-				// 自定义登陆用户名和密码参数，默认为username和password
-//                .usernameParameter("username")
-//                .passwordParameter("password")
-				.and().logout().permitAll();
+				.logout().permitAll();
 
 		// 关闭CSRF跨域
 		http.csrf().disable();

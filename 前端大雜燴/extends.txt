@@ -1,0 +1,18 @@
+function x(name){
+	this.name=name;
+}
+
+x.prototype.test=function(){
+ 	console.log(this.name+'a')
+}
+
+class y extends x{
+	test(){
+	console.log(this.name+'s')
+ }
+}
+
+var zz=new y('f');
+zz.test();
+
+RESULT: fs

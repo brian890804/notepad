@@ -1,0 +1,52 @@
+ 
+import React from "react";
+
+const getFieldCSSClasses = (touched, errors) => {
+  const classes = ["form-control", "form-control-lg", "form-control-solid"];
+  if (touched && errors) {
+    classes.push("is-invalid");
+  }
+
+  if (touched && !errors) {
+    classes.push("is-valid");
+  }
+
+  return classes.join(" ");
+};
+
+export default function MaterialInput({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  label,
+  placeholder,
+  type,
+  customFeedbackLabel,
+  ...props
+}) {
+  return (
+    <>
+      <label className="col-xl-3 col-lg-3 col-form-label">{label}</label>
+      <div className="col-lg-3 col-xl-3">
+        <input
+          type={type}
+          placeholder={placeholder}
+          className={getFieldCSSClasses(
+            touched[field.name],
+            errors[field.name]
+          )}
+          {...field}
+          {...props}
+        />
+      </div>
+    </>
+  );
+}
+
+		<div className="form-group row">
+			 <Field
+                      name={data.name}
+                      component={MaterialInput}
+                      label={data.label}
+                      id={data.label}
+                      type={data.type} />
+		</div>

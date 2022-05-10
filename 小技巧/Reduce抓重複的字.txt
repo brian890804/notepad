@@ -1,0 +1,10 @@
+let arr=['a','a','b','c','c','c','e'];
+const reduceArr=arr.reduce((accumulator,currentValue)=>{
+  if(accumulator[currentValue]) {
+    accumulator[currentValue] ++;
+  } else {
+    accumulator[currentValue] = 1;
+  }
+return accumulator;
+}, {});
+console.log(reduceArr); // { a: 2, b: 1, c: 3, e: 1 }

@@ -1,0 +1,35 @@
+import axios from 'axios';
+import MockAdapter from "axios-mock-adapter";
+const AppSetting = process.env.REACT_APP_URL;
+const mock = new MockAdapter(axios, { onNoMatch: 'passthrough' });
+export default function IpCheckMocks() {
+
+  mock.onPost(AppSetting + "/IpCheck/ActivityData").reply(200, {
+    datas: [{
+      title: "測試1",
+      name: "John Smith",
+      activityCode: 1,
+      startTime: "01",
+      endTime: "12",
+      place: "基隆",
+      signupCount: 5,
+      checkCount: 1,
+      status: "checked",
+    }, {
+      title: "測試2",
+      name: " Smith",
+      activityCode: 1,
+      startTime: "01",
+      endTime: "12",
+      place: "基隆",
+      signupCount: 5,
+      checkCount: 1,
+      status: "checked",
+    }],
+  });
+}
+
+
+// mock.onPost("/IpCheck/ActivityData", { params: { searchText: "John" } }).reply(200, {
+//   users: [{ id: 1, name: "John Smith" }],
+// });

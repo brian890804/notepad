@@ -42,3 +42,15 @@ export function MaterialInput({
     />
   );
 }
+
+example:
+import { Formik, Form, Field } from "formik";
+ 		<Field
+                name="email"
+                component={MaterialInput}
+                label="帳號"
+                id="email"
+                autoComplete="email"
+                autoFocus
+                required
+              />
