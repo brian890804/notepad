@@ -1,0 +1,7 @@
+      cellphone: Yup.string()
+            .matches(/^[0-9]{8}$/, "格式不符")
+            .required("請輸入電話號碼"),
+
+ identity: Yup.string()
+            .matches(/^[A-Z]{1}[1289]{1}[0-9]{8}$/, "格式不符")
+            .required("請輸入身分證"),

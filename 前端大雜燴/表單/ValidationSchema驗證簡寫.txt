@@ -1,0 +1,14 @@
+const validationSchema = () => {
+    let RequiredField = {};
+    Object.keys(initialRequiredValues).map(data => RequiredField[data] = Yup.string().required())
+    RequiredField['identity'] = Yup.string()
+        .matches(/^[A-Z]{1}[1289]{1}[0-9]{8}$/, "格式不符")
+        .required()
+    RequiredField['phone'] = Yup.string()
+        .matches(/^[0-9]{8}$/, "格式不符")
+        .required("請輸入電話號碼"),
+        RequiredField['confirmPassword'] = Yup.string()
+            .oneOf([Yup.ref('password'), null], '二次密碼不符合')
+            .required()
+    return Yup.object(RequiredField)
+}
