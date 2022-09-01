@@ -1,0 +1,28 @@
+import { useLayoutEffect, useState } from "react";
+
+function useRootSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([
+        document.getElementById("root").offsetWidth,
+        document.getElementById("root").offsetHeight,
+      ]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
+
+export default useRootSize;
+
+
+
+
+use 
+
+import useResize from './useResize'
+
+const [width]=useResize()
