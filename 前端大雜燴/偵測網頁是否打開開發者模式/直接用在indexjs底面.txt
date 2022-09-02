@@ -1,0 +1,30 @@
+if(process.env.NODE_ENV !== "development") {
+  console.log = () => {}
+  document.onkeydown = function (e) {
+    console.log(e.key);
+    if(e.key === "F12") {
+      return false;
+    }
+    
+    if(e.ctrlKey) {
+      return false;
+    }
+  }
+    
+  setInterval(() => {
+    let time = Date.now();
+    // eslint-disable-next-line no-undef
+    toDebug();
+    if((Date.now() - time) > 300) {
+      zzzzz();//回CALL給伺服器
+      setTimeout(() => {
+        while(true) {
+          alert("请勿偷取本站资料～！");
+          window.addEventListener("blur", function() {
+            window.close();
+          })
+        }
+      }, 500);
+    }
+  }, 100);
+}
