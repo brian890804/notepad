@@ -1,0 +1,20 @@
+const handleChangePage = function (location) {
+  window.dataLayer.push({
+    event: "pageview",
+    page_location: location.path,
+    page_title: location.name,
+    web_version: webVersion,
+    user_id: store.getState().user.id,
+    utm_source: utm_source
+  });
+};
+
+const getUtmSource = function () {
+  let urlParameter = false;
+  if(!checkDataExpired("urlParameterTimestamp", 1000 * 60 * 60 * 24)){
+    urlParameter = localStorage.getItem("utmMark") ? JSON.parse(localStorage.getItem("utmMark")) : {};
+  }
+  return urlParameter
+}
+
+const utm_source =getUtmSource().utm_source;

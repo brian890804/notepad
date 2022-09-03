@@ -1,0 +1,14 @@
+import { useEffect } from 'react'
+
+export default function JudeEnterWindow() {
+    const reloadCount = Number(sessionStorage.getItem('reloadCount')) || 0;
+    console.log(reloadCount, 'reloadCount')
+    useEffect(() => {
+        if (reloadCount < 1) {
+            sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+            window.open(location.href, '_blacnk','height=800,width=1050')
+        } else {
+            sessionStorage.removeItem('reloadCount');
+        }
+    }, [])
+}
