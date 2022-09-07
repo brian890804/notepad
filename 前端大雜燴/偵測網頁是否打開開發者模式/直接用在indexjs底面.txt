@@ -14,7 +14,7 @@ if(process.env.NODE_ENV !== "development") {
   setInterval(() => {
     let time = Date.now();
     // eslint-disable-next-line no-undef
-    toDebug();
+    debugger
     if((Date.now() - time) > 300) {
       zzzzz();//回CALL給伺服器
       setTimeout(() => {
