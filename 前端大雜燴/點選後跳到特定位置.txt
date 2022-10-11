@@ -1,0 +1,26 @@
+
+  function scrollToEvent(key) {
+    console.log(key, "key");
+    window.scrollTo({
+      top: document.getElementById(key).offsetTop - main_height - 10,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
+
+
+ <div
+              className="city_nav_letter"
+              onClick={() => {
+                scrollToEvent(key);
+              }}
+              key={key}
+            >
+              {key}
+            </div>
+
+
+
+<div id={key} className="select_city_container_title">
+                {key}
+              </div>
