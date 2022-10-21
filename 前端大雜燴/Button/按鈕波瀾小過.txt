@@ -1,0 +1,64 @@
+function WavaEffect(e) {
+    let offTop = 0;
+    for (let i = 0; i < currentRefs.length; i++) {
+      offTop = offTop + currentRefs[i].current.offsetTop;
+    }
+    const wave = document.createElement("div");
+    wave.className = "wava";
+    wave.style.top = e.clientY - wavaRef.current.offsetTop - offTop + "px";
+    wave.style.left =
+      e.clientX -
+      wavaRef.current.offsetLeft -
+      document.getElementById("root").offsetLeft +
+      "px";
+    wavaRef.current.appendChild(wave);
+    setTimeout(() => {
+      wave.remove();
+    }, sec);
+  }
+
+
+
+use--------------------
+<WavaButtomElement
+      ref={wavaRef}
+      className={className}
+      type={type}
+      onClick={WavaEffect}
+    >
+      {children}
+    </WavaButtomElement>
+use--------------------
+
+export const WavaButtomElement = styled.div`
+  /*  */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  .wava {
+    pointer-events: none;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100px;
+    height: 100px;
+    background-color: ${({ type }) => (type ? "#fff" : "#000")};
+    border-radius: 50%;
+    opacity: 30%;
+    animation: wava-animation ${sec / 1000}s;
+  }
+
+  @keyframes wava-animation {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 30%;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0%;
+    }
+  }
+`;

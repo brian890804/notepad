@@ -1,0 +1,42 @@
+
+<div style={{ padding: "40px", columnCount: 2, columnGap: "1rem" }}>
+      {vendorListData.map((list) => (
+        <div style={{ marginBottom: "1rem", breakInside: "avoid" }}>
+          {list.map((data) => {
+            return <VendorItemCard data={data} />;
+          })}
+        </div>
+      ))}
+    </div>
+
+||
+
+
+
+
+  <div
+      className="vendor_container_content"
+      style={{ padding: "40px", columnCount: 2, columnGap: "1rem" }}
+    >
+      {list.map((data) => {
+        return (
+          <div style={{ marginBottom: "1rem", breakInside: "avoid" }}>
+            <VendorItemCard data={data} />{" "}
+          </div>
+        );
+      })}
+    </div>
+
+
+
+.content{
+      padding: 40px;
+      column-count: 2;
+      column-gap: 1rem;
+}
+
+.col{
+      padding: ${side_padding}px;
+      box-sizing: border-box;
+      width: 50%;
+}
