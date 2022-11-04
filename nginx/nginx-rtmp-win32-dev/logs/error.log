@@ -2686,3 +2686,5 @@
 2022/01/14 14:28:33 [notice] 12072#8840: worker process 11580 exited with code 0
 2022/01/14 14:28:33 [notice] 12072#8840: worker process 21608 exited with code 0
 2022/01/14 14:28:33 [notice] 12072#8840: exit
+2022/11/02 15:45:02 [notice] 11120#30328: signal process started
+2022/11/02 15:45:02 [error] 11120#30328: CreateFile() "C:\Users\a2990\Documents\GitHub\notepad\nginx\nginx-rtmp-win32-dev/logs/nginx.pid" failed (2: The system cannot find the file specified)

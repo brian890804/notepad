@@ -1,0 +1,20 @@
+const [fixHeight, setFixHeight] = React.useState(null);
+
+
+   <CardMedia
+          height={isMobile ? 100 : fixHeight || 150}
+          component="img"
+          alt={data.title}
+          onLoad={(e) => {
+            let img = document.createElement("img");
+            img.src = e.target.src;
+            img.addEventListener("load", function () {
+              setFixHeight(img.height / 2);
+              img.remove();
+            });
+          }}
+          onError={(e) => {
+            e.target.src = placeholder_300x300;
+          }}
+          image={data.img || data.picurl}
+        />
