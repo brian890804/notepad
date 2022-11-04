@@ -1,0 +1,9 @@
+title_line=1; //行數
+max-height: ${({ title_line }) => title_line * 16}px;
+font-size: 16px;
+overflow: hidden;
+word-break: break-all;
+
+
+
+
