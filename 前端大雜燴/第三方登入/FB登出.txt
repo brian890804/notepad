@@ -1,0 +1,15 @@
+  if (window.FB) {
+      window.FB.getLoginStatus(function (response) {
+        console.log("slslsl", response);
+        // 檢查登入狀態
+        if (response.status === "connected") {
+          // 移除授權
+          window.FB.api("/me/permissions", "DELETE", function (res) {
+            // 用戶登出
+            window.FB.logout();
+          });
+        } else {
+          // do something
+        }
+      });
+    }
