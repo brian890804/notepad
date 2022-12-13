@@ -1,0 +1,21 @@
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    loadImg();
+  }, []);
+
+  const loadImg = () => {
+    const elem = canvasRef.current;
+    const canvas = elem.getContext("2d");
+    let img = new Image();
+    console.log(img);
+    img.src = "https://tools.wingzero.tw/assets/upload/1579846830988_0.jpg";
+    img.onload = () => {
+      elem.height = 150;
+      elem.width = 150;
+      canvas.drawImage(img, 0, 0,150,150);
+      canvas.fillStyle = "black";
+    };
+  };     
+
+
+return  <canvas ref={canvasRef} />
