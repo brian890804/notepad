@@ -12,6 +12,8 @@
     img.onload = () => {
       elem.height = 150;
       elem.width = 150;
+      canvas.filter = "blur(10px)"; //模糊
+      //來源  X定位,Y定位,X大小,Y大小
       canvas.drawImage(img, 0, 0,150,150);
       canvas.fillStyle = "black";
     };
