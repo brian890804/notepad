@@ -1,0 +1,87 @@
+const picWaterMark = ({
+  url = "", //需要添加水印的图片地址
+  textAlign = "center", //水印位置
+  textBaseline = "middle", //水印位置
+  content = "水印水印水印", //默认水印内容
+  callback = null, //回调函数
+}) => {
+  const img = new Image(); //创建img对象节点
+  img.src = url;
+  //crossOrigin属性设置会产生跨域问题需要在服务器上添加Access-Control-Allow-Origin:*,
+  //后端解决，不设置此属性toDataURL()不能使用
+  img.crossOrigin = "anonymous";
+  img.onload = function () {
+    const canvas = document.createElement("canvas"); //创建canvas节点
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext("2d"); //统一设置
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+
+    const size = 20; //马赛克大小
+    //获取老图所有像素点
+    const oldImg = ctx.getImageData(0, 0, img.width, img.height);
+    //获取新图像素对象
+    const newImg = ctx.createImageData(img.width, img.height);
+
+    //遍历旧图片获取像素点，并打乱随机将新像素点写入新图片
+    for (var i = 0; i < oldImg.width; i++) {
+      for (var j = 0; j < oldImg.height; j++) {
+        //从5*5中获取单个像素信息
+        var color = getPxInfo(
+          oldImg,
+          Math.floor(i * size + Math.random() * size),
+          Math.floor(j * size + Math.random() * size)
+        );
+        //写入单个像素信息
+        for (var a = 0; a < size; a++) {
+          for (var b = 0; b < size; b++) {
+            setPxInfo(newImg, i * size + a, j * size + b, color);
+          }
+        }
+      }
+    }
+    ctx.putImageData(newImg, 0, 0);
+
+    //读取单个像素信息
+    function getPxInfo(imgDate, x, y) {
+      var colorArr = [];
+      var width = imgDate.width;
+      colorArr[0] = imgDate.data[(width * y + x) * 4 + 0];
+      colorArr[1] = imgDate.data[(width * y + x) * 4 + 1];
+      colorArr[2] = imgDate.data[(width * y + x) * 4 + 2];
+      colorArr[3] = imgDate.data[(width * y + x) * 4 + 3];
+      return colorArr;
+    }
+    //写入单个像素信息
+    function setPxInfo(imgDate, x, y, colors) {
+      //（x,y） 之前有多少个像素点 == width*y + x
+      var width = imgDate.width;
+      imgDate.data[(width * y + x) * 4 + 0] = colors[0];
+      imgDate.data[(width * y + x) * 4 + 1] = colors[1];
+      imgDate.data[(width * y + x) * 4 + 2] = colors[2];
+      imgDate.data[(width * y + x) * 4 + 3] = colors[3];
+    }
+
+    //水印样式的设置
+    ctx.textAlign = textAlign;
+    ctx.textBaseline = textBaseline;
+    ctx.fillStyle = "red";
+    ctx.font = "50px sans-serif"
+    ctx.fillText(content, img.width/2, img.height/2);
+    //将添加水印和马赛克之后的图片转为base64格式
+    const base64Url = canvas.toDataURL();
+    // 回调函数将base64Url传入;
+    callback && callback(base64Url);
+  };
+};
+
+
+use
+
+picWaterMark({
+          url: 圖片url,
+          content: "付费上车 马上爽",//浮水印內容
+          callback: (base64Url) => {
+            setUrl((pre) => [...pre, base64Url]); //hook儲存
+          },
+        });
