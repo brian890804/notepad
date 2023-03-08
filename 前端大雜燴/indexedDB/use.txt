@@ -1,0 +1,12 @@
+  const dbName = "bh5_post";
+var request = indexedDB.open(dbName, 2);
+
+
+const { addData, readData } = useIndexDBController();
+
+  useEffect(() => {
+    //初始化 讓indexedDB資料進入useState
+    if (request.readyState === "done") {
+      readData(setPostFileArray);
+    }
+  }, [request.readyState]);
