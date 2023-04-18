@@ -1,0 +1,395 @@
+body{
+    background-color: #262941;
+    font-size: 0.24rem;
+    max-width:580px;
+    margin: 0 auto !important;
+    position: relative;
+}
+
+.mobile{
+    color: #fff;
+}
+.mobile .fixed-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fb729e;
+    z-index: 0;
+}
+.mobile .fixed-bg:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 35vh;
+    background-color: rgb(58,42,42);
+    z-index: 1;
+}
+.mobile .fixed-bg:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 34.5vh;
+    width: 100%;
+    height: 5vh;
+    background-image: url("./../image/mobile/bg-border.png");
+    z-index: 1;
+    background-size: 100% 100%;
+    background-position: bottom;
+}
+.fixed-decoration{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.mobile .fixed-header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 1.51rem;
+    padding:0 0.37rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+.mobile .fixed-header .left{
+    display: flex;
+    font-size: 0.4rem;
+    align-items: center;
+}
+
+.mobile .fixed-header .left .title{
+    font-weight: normal;
+    font-size: 0.36rem;
+    line-height: 1.7;
+}
+.mobile .fixed-header .left .slogn{
+    font-size: 0.24rem;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+}
+.mobile .fixed-header .left .logo{
+    width: 1.08rem;
+    height: 1.08rem;
+    margin-right: 0.19rem;
+}
+
+.mobile .fixed-header .right{
+    display: block;
+    color: #fff;
+    padding: 0.19rem 0.57rem;
+    border-radius: 0.35rem;
+    font-size: 0.32rem;
+    line-height: 0.24rem;
+    background-color: rgba(254,254,254,0.3);
+}
+.mobile .fixed-footer{
+    z-index: 9;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 0.4rem 0.3rem 0.4rem;
+    box-sizing: border-box;
+    font-size: 0.24rem;
+    background: linear-gradient(rgba(58,42,42,0),rgba(58,42,42,1) 30%,rgba(58,42,42,1));
+    pointer-events: none;
+}
+.mobile .download-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background-color: rgb(58,42,42);
+}
+
+.mobile .download-btn{
+    pointer-events: auto;
+    width: 4.6rem;
+    height: 0.9rem;
+    max-height: 7vh;
+    margin: 0 0.3rem;
+    display: none;
+}
+
+.mobile .arrow-down{
+    pointer-events: auto;
+    transition: opacity 0.2s;
+    position: absolute;
+    bottom: 0.21rem;
+    width: 0.34rem;
+    height: 0.28rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mobile .download-btn a{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 0.45rem;
+    background: linear-gradient(90deg,#FF6130,#FF4870);
+}
+/*.mobile  .fixed-footer .download-btn#downloadBtn-iosSign a{*/
+/*    background: #ef1f6b;*/
+/*    background: #722bff;*/
+/*}*/
+.mobile  .download-btn#downloadBtn-iosSign:nth-child(2) a{
+    background: #722bff;
+}
+.mobile .download-btn a .iconfont{
+    margin-right: 0.1rem;
+    position: relative;
+    top: -0.02rem;
+}
+.mobile .download-btn img{
+    width: 100%;
+    height: 100%;
+}
+.mobile .subject{
+    font-size: 2.5vh;
+    color: #fef333;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1vh;
+}
+.mobile .subject img{
+    width: 2.7rem;
+}
+.mobile .main-wrap{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.mobile .main-inner{
+    padding-top: 1.5rem;
+}
+
+.section .main .center{
+    display: flex;
+    justify-content: center;
+    max-height: 60vh;
+    overflow: hidden;
+    margin-bottom: 5vh;
+}
+.mobile .phone{
+    display: inline-block;
+    position: relative;
+    /*max-height: 55vh;*/
+    /*width: 5rem;*/
+    /*width: 4rem;*/
+    min-width: 1px;
+    height: 8rem;
+    /*overflow: visible;*/
+    z-index: 1;
+    background-size: 100%;
+}
+.phone-wrap{
+    pointer-events: none;
+}
+.mobile .phone .phone-content{
+    display: inline-block;
+    min-width: 1px;
+    width: 4rem;
+    /*height: 7rem;*/
+    z-index: 10;
+    /*max-height: 65vh;*/
+}
+.android-doc-btn{
+    pointer-events: auto;
+    display: none;
+    text-align: center;
+    margin-top: 5px;
+    color: #f1f1f1;
+}
+.tips{
+    text-align: left;
+    text-indent: 0.4rem;
+    font-size: 0.2rem;
+    line-height: 1.5;
+    /*padding-top: 0.7rem;*/
+    z-index: 2;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.2rem;
+    position: relative;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.3rem;
+    background-color: rgb(0,0,0);
+}
+
+.tips p{
+    white-space: nowrap;
+    font-size: 0.2rem;
+    transform-origin: center;
+    text-align: center;
+    text-indent: 0;
+}
+
+/*.ts-left{*/
+/*    transition: 0.75s transform ease-in-out 0.3s;*/
+/*    transform: translateX(2rem);*/
+/*}*/
+/*.section.active .ts-left{*/
+/*    transform: translateX(0);*/
+/*}*/
+.section.active .ts-left{
+    animation: 0.75s left 0.3s both;
+}
+@keyframes left {
+    from {transform: translateX(80%)}
+    to {transform: translateX(0)}
+}
+.section.active .ts-fade {
+    animation: 0.75s fade 0.8s both;
+}
+@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+.section.active .ts-rotation1 {
+    animation: 0.6s rotation1 0.6s both;
+    transform-origin: bottom;
+}
+@keyframes rotation1 {
+    from {transform: rotate(-11deg)}
+    to {transform: rotate(0deg)}
+}
+
+
+@keyframes scale
+{
+    from {transform: scale(1)}
+    to {transform: scale(1.05)}
+}
+
+.decoration{
+    position: absolute;
+    z-index: 0;
+    transition: 0.2s opacity;
+    opacity: 0;
+}
+.decoration.decoration-left{
+    left: 0;
+    bottom: 30vh;
+    height: 60vh;
+    max-height: 9rem;
+    /*transform: translateX(-100%);*/
+}
+.decoration.decoration-right{
+    right: 0;
+    bottom: 55vh;
+    height: 40vh;
+    max-height: 8rem;
+    /*transform: translateX(100%);*/
+}
+.section-2.decoration.decoration-left{
+    bottom: 35vh;
+    height: 50vh;
+}
+.section-2.decoration.decoration-right{
+    bottom: 32vh;
+    height: 40vh;
+}
+.section-3.decoration.decoration-left{
+    bottom: 32vh;
+    height: 50vh;
+    top: auto;
+}
+.section-3.decoration.decoration-right{
+    bottom: 34vh;
+    height: 56vh;
+    top: auto;
+    max-height: 7rem;
+}
+.active.decoration.decoration-left{
+    animation: 0.8s slideInLeft 0.2s both;
+    opacity: 1;
+}
+.active.decoration.decoration-right{
+    animation: 0.8s slideInRight 0.2s both;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+@keyframes slideInLeft {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes slideInRight {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+/* 动画 */
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+@keyframes fadeScaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+/* cover fullpage */
+#fp-nav.fp-right{
+    right: 10px;
+}
+#fp-nav ul li, .fp-slidesNav ul li{
+    height: auto;
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span{
+    position: relative;
+    display: block;
+    background: #fff;
+    font-size: 0;
+    text-indent: -1000px;
+    width: 7px;
+    height: 7px;
+    margin: 0 !important;
+    border: 1px solid transparent;
+}
+#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span{
+    background: #fb729e;
+    border-color: #fff;
+}
+#fp-nav ul li a span.fp-sr-only, .fp-slidesNav ul li a span.fp-sr-only{
+    position: absolute;
+}
+#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span{
+    height: 45px;
+    width: 7px;
+    margin: -6px 0 0 -6px;
+    border-radius: 9px;
+}

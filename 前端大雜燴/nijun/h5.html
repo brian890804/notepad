@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>尼醬漫画-条漫、轻小说线上看</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+	 <link rel="stylesheet" href="css/h5/reset.css">
+    <link rel="stylesheet" href="css/h5/fullpage.min.css">
+	 <link rel="stylesheet" href="css/h5/mobile.css">
+   
+    <script>
+        (function (c, d) {
+            var e = document.documentElement || document.body,
+                a = "orientationchange" in window ? "orientationchange" : "resize",
+                b = function () {
+                    var f = e.clientWidth;
+                    // e.style.fontSize = (f >= 750) ? "100px" : 100 * (f / 750) + "px"
+                    e.style.fontSize = (f >= 580) ? "77px" : 77 * (f / 580) + "px"
+                };
+            b();
+            c.addEventListener(a, b, false)
+        })(window);
+        function isIos() {
+            return /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);
+        }
+    </script>
+    <script src="js/h5/fullpage.min.js"></script>
+    <script src="js/h5/jquery-3.4.1.min.js"></script>
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11046208684"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11046208684');
+</script>
+   
+	
+</head>
+<style>
+    .doc_wrap{
+        position:fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 100;
+    }
+    .fade-bg{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        border-radius: 50vh 0 0 0;
+        background-color: rgba(0,0,0,0.7);
+        transition: all 0.4s;
+        width: 0;
+        height: 0;
+        /*transform: translate(50vh,50vh);*/
+    }
+    .fade-bg.active{
+        width: 100vh;
+        height: 100vh;
+    }
+    .doc{
+        pointer-events: auto;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        padding-bottom: 1rem;
+        max-width: 750px;
+        color: #fff;
+        font-size: .24rem;
+        background-color: #212737;
+        overflow-y: auto;
+    }
+    .main-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    .doc .doc-title{
+        text-align: center;
+        padding: 0.45rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .doc .fix-close{
+        position: fixed;
+        right: 0.35rem;
+        top: 0.32rem;
+        width: 0.66rem;
+        height: 0.66rem;
+    }
+    /*.doc .doc-title:before,.doc .doc-title:after{*/
+    /*    content: "";*/
+    /*    display: inline-block;*/
+    /*    flex: 1;*/
+    /*    height: 1px;*/
+    /*    background-color: #fef333;*/
+    /*}*/
+
+    .doc .doc-title img{
+        height: 0.43rem;
+        margin: 0 0.21rem;
+    }
+    .doc .main-content{
+        padding: 0 0.68rem;
+    }
+    .doc .main-content .question{
+        width: 100%;
+        background-color: rgba(0,0,0,0.42);
+        border-radius: 0.35rem;
+        padding: 0.18rem 0;
+        text-align: center;
+        margin-bottom: 0.25rem;
+    }
+    .doc .main-content .question img{
+        height: 0.38rem;
+    }
+    .doc .main-content .tip{
+        width: 100%;
+        font-size: 0.34rem;
+        margin-bottom: 0.25rem;
+    }
+    .doc .main-content .icon{
+        width: 0.64rem;
+    }
+    .doc-steps .step-text{
+        font-size: 0.28rem;
+        margin-bottom: 0.25rem;
+        margin-top: 0.08rem;
+    }
+    .doc-steps .step-text .icon{
+        width: 0.64rem;
+        vertical-align: text-top;
+    }
+    .doc-steps .step-img{
+        margin-bottom: 0.36rem;
+    }
+    .doc-steps .step-img img{
+        width: 100%;
+        border-radius: 0.32rem;
+    }
+</style>
+<body>
+<body class="fp-viewing-1" style="overflow: hidden; height: 100%;">
+<div class="mobile">
+    <div class="fixed-bg">
+        <div class="fixed-decoration">
+            <img src="images/h5/8dd506ccda59ac63.png" alt="" class="decoration decoration-left section-1 active">
+            <img src="images/h5/9335c3fcc0b8e47f.png" alt="" class="decoration decoration-right section-1">
+            <img src="images/h5/39da79fc72b44dea.png" alt="" class="decoration decoration-left section-2 ">
+            <img src="images/h5/eba95cf50f0e988b.png" alt="" class="decoration decoration-right section-2 active">
+            <img src="images/h5/400e9ae4c7396b3c.png" alt="" class="decoration decoration-left section-3">
+            <img src="images/h5/3c16c221ccb251ec.png" alt="" class="decoration decoration-right section-3">
+        </div>
+    </div>
+    <header class="fixed-header">
+        <div class="left">
+            <img class="logo" src="images/226d60b550715123.png" alt="">
+            <div>
+                <h1 class="title">尼醬漫画</h1>
+                <div class="slogn">国漫,条漫,轻小说,韩漫,</div>
+            </div>
+        </div>
+
+    </header>
+    <footer class="fixed-footer">
+        <div class="download-box">
+            <div class="download-btn"  style="display: block;">
+                <a class="copy" href="https://7iad-mir.com/"  >
+                    <i class="iconfont icon-appstore"></i>
+                    <span>苹果版下载(暂无)</span>
+                </a>
+            </div>
+           
+            <div class="download-btn"style="display: block;">
+                <a class="copy" href="https://dmb-cy.com/api/v3/file/source/8/njmh_1.0.0.apk?sign=ndIL0SZph8OSGhx1tBFzI9rRKGr0LWnsErZ5pYEebfs%3D%3A0"> 
+                    <i class="iconfont icon-android"></i>
+                    <span>安卓版下载</span>
+                </a>
+            </div>
+        </div>
+       
+    </footer>
+    <div id="fullpage" class="page fullpage-wrapper" style="height: 100%; position: relative; touch-action: none; transform: translate3d(0px, -736px, 0px); transition: all 700ms ease 0s;">
+        <div class="section section1 fp-section fp-table active fp-completely" data-fp-styles="null" style="height: 736px;"><div class="fp-tableCell" style="height: 736px;">
+            <div class="subject"><img src="images/7921a781d6b3789d.png" alt=""></div>
+            <div class="main">
+                <div class="center">
+                    <img class="phone" src="images/dae80ed4897ae8f6.png" alt="">
+                </div>
+            </div>
+        </div></div>
+        <div class="section section2 fp-section fp-table " data-fp-styles="null" style="height: 736px;"><div class="fp-tableCell" style="height: 736px;">
+            <div class="subject"><img src="images/df28abb059a8455c.png" alt=""></div>
+            <div class="main">
+                <div class="center">
+                    <img class="phone" src="images/29e69bade72120b5.png" alt="">
+                </div>
+            </div>
+        </div></div>
+        <div class="section section3 fp-section fp-table" data-fp-styles="null" style="height: 736px;"><div class="fp-tableCell" style="height: 736px;">
+            <div class="subject"><img src="images/14d6ec08e05bb295.png" alt=""></div>
+            <div class="main">
+                <div class="center">
+                    <img class="phone" src="images/ce9ba23abc7021b4.png" alt="">
+                </div>
+            </div>
+        </div></div>
+        <div class="section section4 fp-section fp-table" data-fp-styles="null" style="height: 736px;"><div class="fp-tableCell" style="height: 736px;">
+            <div class="subject" style="display:none"><img src="images/df28abb059a8455c.png" alt=""></div>
+            <div class="main">
+                <div class="center">
+                    <img class="phone" src="images/438e92627362d3e0.png" alt="">
+                </div>
+            </div>
+        </div></div>
+    </div>
+</div>
+<div id="fp-nav" class="fp-right" style="margin-top: -35.5px;"><ul><li><a href="#" class="active"><span class="fp-sr-only">Section 1</span><span></span></a></li><li><a href="#"><span class="fp-sr-only">Section 2</span><span></span></a></li><li><a href="#"><span class="fp-sr-only">Section 3</span><span></span></a></li><li><a href="#"><span class="fp-sr-only">Section 4</span><span></span></a></li></ul></div>
+</body>
+
+
+<script>
+    //
+    new fullpage('#fullpage', {
+        autoScrolling:true,
+        scrollHorizontally: true,
+        navigation:true,
+        onLeave:function(from,to){
+            $('.fixed-decoration .decoration').removeClass('active')
+            $('.fixed-decoration .decoration.section-'+(to.index+1)).addClass('active')
+        }
+    });
+    function moveDown() {
+        fullpage_api.moveSectionDown()
+    }
+</script>
+</html>

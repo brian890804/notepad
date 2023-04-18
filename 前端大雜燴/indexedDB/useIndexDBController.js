@@ -16,12 +16,22 @@ function useIndexDBController() {
   const addData = useCallback(async (postFileArray) => {
     var transaction = db.transaction(["customers"], "readwrite");
     var objectStore = transaction.objectStore("customers");
-
-    await objectStore.put({
-      ssn: "post_add_media",
-      name: "media",
-      data: [...postFileArray],
-    });
+    if (typeof localStorage === "object") {
+      try {
+        localStorage.setItem("localStorage", 1);
+        localStorage.removeItem("localStorage");
+        await objectStore.put({
+          ssn: "post_add_media",
+          name: "media",
+          data: [...postFileArray],
+        });
+      } catch (e) {
+        Storage.prototype._setItem = Storage.prototype.setItem;
+        Storage.prototype.setItem = function () {};
+        // alert("您处于无痕浏览，无法为您保存");
+        //無痕模式不能存Safari無痕存BLOB不支援
+      }
+    }
   }, []);
 
   const readData = useCallback((callback) => {

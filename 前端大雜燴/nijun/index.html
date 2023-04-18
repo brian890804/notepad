@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+		<title>尼醬漫画-条漫、轻小说线上看</title>
+    <link rel="shortcut icon" href="/favicon.ico?v=1">
+    <link rel="stylesheet" href="css/fullpage.min.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+	
+    <script src="js/layer.js"></script>
+    <script src="js/fullpage.min.js"></script>
+    <script src="js/qrcode.min.js"></script>
+	 <script>
+            if (/(Android|iPhone|iPod|iPad)/i.test(navigator.userAgent)) {
+                window.location.replace('h5.html');
+            }
+        </script>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11046208684"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-11046208684');
+</script>
+</head>
+
+<body>
+<div class="desktop">
+    <!--    <div class="fixed-bg"></div>-->
+    <div class="fixed-main">
+        <div class="layout-right">
+            <div class="app-info">
+                <div class="brand flex-center">
+                    <img class="logo" src="images/226d60b550715123.png" alt="">
+                    <div>
+                        <div class="app-name">尼酱漫画</div>
+                        <div class="app-slogn">条漫,轻小说,漫画,韩漫,国漫</div>
+                    </div>
+                </div>
+             
+                <div class="subject">
+                    立即观看：<a href="https://7iad-mir.com/">7iad-mir.com</a>
+                </div>
+            </div>
+            <div class="qrcode-warp">
+                <div class="qrcode" id="qrcode1">
+                    <img class="qrcode-logo" src="images/226d60b550715123.png" alt=""/>
+                </div>
+                <span>推荐使用UC浏览器扫码下载</span>
+            </div>
+        </div>
+    </div>
+    <div id="fullpage" class="page">
+        <div class="section section1">
+            <div class="layout">
+                <div class="app">
+                    <img src="images/dae80ed4897ae8f6.png" alt="" class="main-img">
+                    <img src="images/7921a781d6b3789d.png" alt="" class="section-title">
+                </div>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="layout">
+                <div class="app">
+                    <img src="images/29e69bade72120b5.png" alt="" class="main-img">
+                    <img src="images/df28abb059a8455c.png" alt="" class="section-title">
+                </div>
+            </div>
+        </div>
+        <div class="section section3">
+            <div class="layout">
+                <div class="app">
+                    <img src="images/ce9ba23abc7021b4.png" alt="" class="main-img">
+                    <img src="images/14d6ec08e05bb295.png" alt="" class="section-title">
+                </div>
+            </div>
+        </div>
+        <div class="section section4">
+            <div class="layout">
+                <div class="app">
+                    <img src="images/438e92627362d3e0.png" alt="" class="main-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var subjectList = document.querySelectorAll('.subject img')
+    new fullpage('#fullpage', {
+        autoScrolling:true,
+        scrollHorizontally: true,
+        navigation:true,
+        onLeave:function (org,det) {
+            subjectList.forEach(function (item,index) {
+                if(det.index === index){
+                    item.style.opacity = 1
+                }else{
+                    item.style.opacity = 0
+                }
+            })
+           
+        }
+    });
+    var app_link = "https://dmb-cy.com/api/v3/file/source/8/njmh_1.0.0.apk?sign=ndIL0SZph8OSGhx1tBFzI9rRKGr0LWnsErZ5pYEebfs%3D%3A0"; //【 二维码地址,请填写你的下载地址 】
+
+    new QRCode(document.getElementById("qrcode1"), {
+        text: app_link,
+        width: 300,
+        height: 300,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.Q
+    });
+    var qrcodeWarps = document.querySelectorAll('.qrcode-warp');
+    function handleDownload(){
+        layer.open({
+            skin:'msg',
+            content:'请使用手机扫描二维码立即下载！',
+            time:2
+        })
+        qrcodeWarps.forEach(function (item) {
+            item.classList.add('animation')
+        })
+        setTimeout(function () {
+            qrcodeWarps.forEach(function (item) {
+                item.classList.remove('animation')
+            })
+        },1000)
+    }
+</script>
+
+</html>

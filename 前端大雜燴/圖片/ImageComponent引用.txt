@@ -1,0 +1,8 @@
+ <ImageComponent
+            is_cover={true}
+            src={data.img}
+            alt={data.title}
+            title={data.title}
+            height={100}
+            border_radius={0}
+          />
