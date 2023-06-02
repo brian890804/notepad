@@ -1,0 +1,25 @@
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "https://pyhorse.com/wp-content/uploads/2023/04/網站圖示512-08-1.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://pyhorse.com/wp-content/uploads/2023/04/網站圖示512-08-1.png",
+      "type": "image/png",
+      "sizes": "192x192 200x200"
+    },
+    {
+      "src": "https://pyhorse.com/wp-content/uploads/2023/04/網站圖示512-08-1.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
