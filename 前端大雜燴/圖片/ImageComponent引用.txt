@@ -1,3 +1,5 @@
+import "lazysizes/plugins/parent-fit/ls.parent-fit"; 這個要+在index.js裡面
+
  <ImageComponent
             is_cover={true}
             src={data.img}

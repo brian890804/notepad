@@ -1,0 +1,36 @@
+import { useEffect, useRef } from 'react';
+
+function useDebounce(input, delay) {
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  const debouncedFunction = (...args) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    if (typeof input === 'function') {
+      timeoutRef.current = setTimeout(() => {
+        input(...args);
+      }, delay);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof input !== 'function') {
+      // 如果传入的是普通值而不是函数，直接触发该值
+      debouncedFunction(input);
+    }
+  }, [input]);
+
+  return debouncedFunction;
+}
+
+export default useDebounce;

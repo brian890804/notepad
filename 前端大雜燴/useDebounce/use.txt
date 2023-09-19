@@ -1,0 +1,4 @@
+import ...
+
+  const debouncedFunction = useDebounce(getPersonalNotify, 1000);
+debouncedFunction();
