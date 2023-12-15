@@ -1,0 +1,187 @@
+/* fastclick.js 消除閃爍效果 */
+html,
+body {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  // -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* 被行銷塞進來的東西有時候會造成畫面跑掉 */
+body {
+  > img {
+    display: none;
+  }
+}
+
+
+.displaynone {
+  display: none !important;
+}
+
+/* 特效統一使用 */
+.CSSTransition_opacity-enter {
+  opacity: 0%;
+}
+
+.CSSTransition_opacity-enter-active {
+  opacity: 100%;
+  transition: 0.2s;
+}
+
+.CSSTransition_opacity-exit {
+  opacity: 100%;
+}
+
+.CSSTransition_opacity-exit-active {
+  opacity: 0%;
+  transition: 0.2s;
+}
+
+.CSSTransition_popup-enter {
+  transform: translateY(100%);
+}
+
+.CSSTransition_popup-enter-active {
+  transform: translateY(0);
+  transition: 0.1s;
+}
+
+.CSSTransition_popup-exit {
+  transform: translateY(0);
+}
+
+.CSSTransition_popup-exit-active {
+  transform: translateY(100%);
+  transition: 0.1s;
+}
+
+/* 路由前進時的入場/離場動畫 */
+.swiper-pagination-right .swiper-pagination-bullets {
+  text-align: right;
+}
+
+.swiper-pagination-right .swiper-pagination-bullet-active {
+  background-color: #f24c7c;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 90%);
+}
+
+.swiper-pagination-center .swiper-pagination-bullets {
+  text-align: center;
+}
+
+.swiper-pagination-center .swiper-pagination-bullet-active {
+  background-color: #f24c7c;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 90%);
+}
+
+/* 路由前進和重新導向的入場/離場動畫 */
+.PUSH-enter,
+.REPLACE-enter {
+  transform: translateX(100%);
+}
+
+.PUSH-enter-active,
+.REPLACE-enter-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(0);
+  transition: all 500ms;
+}
+
+.PUSH-exit,
+.REPLACE-exit {
+  transform: translateX(0);
+}
+
+.PUSH-exit-active,
+.REPLACE-exit-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 500ms;
+}
+
+/* 路由後退時的入場/離場動畫 */
+.POP-enter {
+  transform: translateX(-100%);
+}
+
+.POP-enter-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translateX(0);
+  transition: all 500ms;
+}
+
+.POP-exit {
+  transform: translateX(0);
+}
+
+.POP-exit-active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: translate(100%);
+  transition: all 500ms;
+}
+
+/* 滾輪樣式 */
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* 彈窗樣式 */
+.Toastify {
+  .toast_container {
+    bottom: 62px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .toast_container_item {
+      position: relative;
+      padding: 6px 10px;
+      min-height: unset;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      border-radius: 100px;
+
+      .Toastify__close-button {
+        display: none;
+      }
+    }
+  }
+}
+.router-wrapper{
+  height: 100%;
+}
+#root {
+  position: relative;
+  margin: auto;
+}
+
+// @media (min-width: 599px) {
+//   #root {
+//     max-width: 100%;
+//     border-right: 1px solid #f3f3f3;
+//     border-left: 1px solid #f3f3f3;
+//   }
+// }
