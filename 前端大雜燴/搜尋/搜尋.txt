@@ -1,0 +1,10 @@
+  function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  const handleSearch = (e) => {
+    setIsSearch(e.target.value.length > 0);
+    const pattern = `.*${escapeRegExp(e.target.value)}.*`;
+    const regex = new RegExp(pattern, "i");
+    const result = data.filter((item) => regex.test(item.label));
+    setSearchData(result);
+  };
