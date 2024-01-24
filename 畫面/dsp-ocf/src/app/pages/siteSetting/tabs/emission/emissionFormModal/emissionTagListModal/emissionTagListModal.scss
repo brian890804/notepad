@@ -1,0 +1,12 @@
+.emissionTagListModal {
+	.ant-tabs {
+		&-nav {
+			margin-bottom: 0;
+		}
+		&-content-holder {
+			border: 1px solid #f0f0f0;
+			border-top: 0;
+			padding: 12px 8px;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+.siteCompanySelect {
+	width: 100%;
+	position: relative;
+
+	&__select {
+		width: 100%;
+		z-index: 10;
+
+		.ant-select-selection-overflow {
+			padding: 4px 0;
+			gap: 4px;
+		}
+	}
+
+	&__treeSelect {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+}

@@ -1,0 +1,16 @@
+.emissionFormModal {
+	&__lossMethod {
+		display: inline-flex;
+		align-items: center;
+
+		&__info {
+			font-size: 16px;
+			margin-left: 8px;
+			cursor: pointer;
+
+			&:hover {
+				color: #0087dc;
+			}
+		}
+	}
+}

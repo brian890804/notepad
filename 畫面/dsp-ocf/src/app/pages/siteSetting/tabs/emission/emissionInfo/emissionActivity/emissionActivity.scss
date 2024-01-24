@@ -1,0 +1,13 @@
+.emissionActivity {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	.searchBar {
+		margin-top: 0;
+	}
+
+	&__contributions {
+		justify-content: center;
+	}
+}

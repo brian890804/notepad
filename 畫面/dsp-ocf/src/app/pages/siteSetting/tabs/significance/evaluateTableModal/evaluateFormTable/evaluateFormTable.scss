@@ -1,0 +1,100 @@
+.evaluateFormTable {
+	&__table {
+		align-items: stretch;
+
+		.ant-table-cell {
+			position: relative;
+
+			&:hover {
+				.evaluateFormTable__table__header__btn {
+					opacity: 1;
+				}
+
+				.evaluateFormTable__table__column__btn {
+					opacity: 1;
+				}
+			}
+		}
+
+		.ant-table-header {
+			padding: 12px 0 0 12px;
+			table {
+				border-top: 1px solid #f0f0f0;
+				border-inline-start: 1px solid #f0f0f0;
+			}
+		}
+
+		.ant-table-body {
+			padding-left: 12px;
+			table {
+				border-inline-start: 1px solid #f0f0f0;
+			}
+		}
+
+		.ant-table-container {
+			border: none !important;
+		}
+
+		.ant-table-content {
+			padding: 12px 0 0 12px;
+			table {
+				border-top: 1px solid #f0f0f0;
+				border-inline-start: 1px solid #f0f0f0;
+			}
+		}
+
+		&__column {
+			position: relative;
+			&__btn {
+				transition: opacity 0.2s linear;
+				opacity: 0;
+				top: 50%;
+				position: absolute;
+				transform: translate(-100%, -50%);
+			}
+		}
+
+		&__header {
+			&__btn {
+				transition: opacity 0.2s linear;
+				opacity: 0;
+				left: 50%;
+				top: 0px;
+				position: absolute;
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		&__formItem {
+			margin-bottom: 0;
+		}
+
+		&__plusBtn {
+			min-width: 24px;
+
+			&.column {
+				margin-top: 12px;
+				min-width: 24px;
+				height: calc(100% - 44px);
+			}
+
+			&.row {
+				margin-left: 12px;
+				width: calc(100% - 12px) !important;
+			}
+		}
+
+		.minusBtn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&__icon {
+				font-size: 18px !important;
+				color: red;
+				background-color: white;
+				border-radius: 50%;
+			}
+		}
+	}
+}

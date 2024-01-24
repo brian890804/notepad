@@ -1,0 +1,62 @@
+.playground {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	&__count {
+		color: green;
+		font-size: 32px;
+	}
+
+	&__action {
+		margin-top: 12px;
+		&__btn {
+			margin: 0 20px;
+		}
+	}
+
+	&__modal-div {
+		text-align: center;
+		margin-top: 20px;
+		&__title {
+			width: 6.5em;
+			border-right: 0.05em solid;
+			overflow: hidden;
+			white-space: nowrap;
+			animation: typing 1.5s steps(11), caret 1s steps(1) infinite;
+		}
+		&__btn {
+			font-size: 1em;
+			line-height: 2em;
+			cursor: pointer;
+			width: 150px;
+			border: none;
+			border-radius: 5px;
+			justify-content: center;
+			background: linear-gradient(97deg, rgba(22, 160, 133, 1) 0%, rgba(243, 199, 83, 1) 31%, rgba(22, 160, 133, 1) 81%);
+			background-position: 125%;
+			background-size: 200% auto;
+			animation: shine 2s infinite;
+		}
+	}
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+}
+
+@keyframes caret {
+	50% {
+		border-color: transparent;
+	}
+}
+
+@keyframes shine {
+	to {
+		background-position: -70%;
+	}
+}

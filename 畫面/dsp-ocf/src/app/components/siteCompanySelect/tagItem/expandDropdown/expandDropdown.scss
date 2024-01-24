@@ -1,0 +1,32 @@
+.expandDropdown {
+	margin-right: 4px;
+	cursor: pointer;
+
+	&__overlay {
+		min-width: 200px !important;
+		max-width: 300px;
+
+		&__body {
+			width: 100%;
+			overflow: hidden;
+			padding: 8px 16px;
+
+			&__checkbox {
+				width: 100%;
+				span {
+					&:last-child {
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+
+		&__actions {
+			display: flex;
+			justify-content: flex-end;
+			padding: 8px 16px;
+		}
+	}
+}

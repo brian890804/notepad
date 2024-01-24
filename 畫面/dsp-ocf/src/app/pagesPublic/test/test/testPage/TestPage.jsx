@@ -1,0 +1,570 @@
+/* eslint-disable */
+import React from 'react';
+
+const TestPage = () => {
+	const dataItems = {
+		currentInfo: {
+			startDate: 1640966400000,
+			endDate: 1672502399999,
+		},
+		lastInfo: {
+			startDate: 1609430400000,
+			endDate: 1640966399999,
+		},
+		months: [
+			{
+				month: 1,
+				fullDate: 1640966400000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 2,
+				fullDate: 1643644800000,
+				currentAmount: 418.0238744883671,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 29.65721163905137,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 380.182913216439,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 8.183749632876703,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 3,
+				fullDate: 1646064000000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 4,
+				fullDate: 1648742400000,
+				currentAmount: 447.8827226661076,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 31.77558389898361,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 407.3388355890418,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 8.768303178082181,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 5,
+				fullDate: 1651334400000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 6,
+				fullDate: 1654012800000,
+				currentAmount: 447.8827226661076,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 31.77558389898361,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 407.3388355890418,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 8.768303178082181,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 7,
+				fullDate: 1656604800000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 8,
+				fullDate: 1659283200000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 9,
+				fullDate: 1661961600000,
+				currentAmount: 447.8827226661076,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 31.77558389898361,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 407.3388355890418,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 8.768303178082181,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 10,
+				fullDate: 1664553600000,
+				currentAmount: 462.8121467549778,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 32.83477002894973,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 420.9167967753432,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 9.060579950684922,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 11,
+				fullDate: 1667232000000,
+				currentAmount: 447.8827226661076,
+				lastAmount: 0,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 31.77558389898361,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 407.3388355890418,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 8.768303178082181,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+			{
+				month: 12,
+				fullDate: 1669824000000,
+				currentAmount: 14.92942408887023,
+				lastAmount: 14.92942408887023,
+				scopes: [
+					{
+						scopeId: 2,
+						title: '1 直接溫室氣體',
+						currentAmount: 1.059186129966119,
+						lastAmount: 1.059186129966119,
+					},
+					{
+						scopeId: 8,
+						title: '2 輸入能源間溫室氣體排放',
+						currentAmount: 13.57796118630137,
+						lastAmount: 13.57796118630137,
+					},
+					{
+						scopeId: 11,
+						title: '3 運輸之間排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 12,
+						title: '4 其他組織提供之產品間接排放',
+						currentAmount: 0.2922767726027398,
+						lastAmount: 0.2922767726027398,
+					},
+					{
+						scopeId: 13,
+						title: '5 使用組織產品所衍生的間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+					{
+						scopeId: 14,
+						title: '6 來自其他來源之間接排放',
+						currentAmount: 0,
+						lastAmount: 0,
+					},
+				],
+			},
+		],
+	};
+	const dataMonthConvertTypes = dataItems => {
+		const { currentInfo, lastInfo, months } = dataItems;
+		let temp = {};
+		months.forEach(dataItem => {
+			dataItem.scopes.forEach(item => {
+				const { title, currentAmount, lastAmount } = item;
+				if (title in temp) {
+					if ('current' in temp[title]) temp[title]['current']['children'].push(currentAmount);
+					if ('last' in temp[title]) temp[title]['last']['children'].push(lastAmount);
+				} else {
+					temp[title] = {
+						['current']: { name: title, ['children']: [currentAmount], stack: 'current' },
+						['last']: { name: title, ['children']: [lastAmount], stack: 'last' },
+					};
+				}
+			});
+		});
+		return { currentInfo, lastInfo, types: Object.values(temp) };
+	};
+	console.info(dataMonthConvertTypes(dataItems), 'info');
+	return <div></div>;
+};
+
+TestPage.propTypes = {};
+
+export default TestPage;

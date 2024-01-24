@@ -1,0 +1,24 @@
+.gwpEditForm {
+	&--single {
+		.ant-card {
+			width: calc(100% + 16px);
+			background: transparent;
+			border: none;
+			&-body {
+				padding: 0;
+			}
+		}
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 20px;
+		margin-bottom: 12px;
+	}
+
+	&__actions {
+		margin-top: 24px;
+		display: flex;
+		justify-content: center;
+	}
+}

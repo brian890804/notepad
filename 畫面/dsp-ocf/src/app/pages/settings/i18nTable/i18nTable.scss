@@ -1,0 +1,14 @@
+.i18nTable {
+	&__toolbar {
+		display: flex;
+		justify-content: space-between;
+
+		&__search {
+			max-width: 250px;
+		}
+	}
+
+	&__table {
+		margin-top: 12px;
+	}
+}

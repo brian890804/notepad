@@ -1,0 +1,47 @@
+.siteBreadcrumb {
+	display: flex;
+	height: 32px;
+	align-items: center;
+	justify-content: space-between;
+
+	&__body {
+		flex: 1;
+		font-weight: bold;
+
+		.ant-space-item {
+			display: flex;
+			align-items: center;
+		}
+
+		.ant-breadcrumb-separator {
+			display: flex;
+			align-items: center;
+			line-height: 10px;
+			color: #666;
+			margin: 0 16px;
+			span {
+				font-size: 10px;
+			}
+		}
+
+		&__dropdown {
+			color: black;
+			&:hover {
+				color: #666;
+			}
+			cursor: pointer;
+		}
+
+		&__item {
+			&--clickable {
+				cursor: pointer;
+				&:hover {
+					color: #666;
+				}
+			}
+		}
+	}
+
+	&__tour {
+	}
+}

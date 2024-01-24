@@ -1,0 +1,22 @@
+[
+    {
+        "label": "陽光大樓",
+        "value": 2,
+        "companies": [
+            {
+                "label": "台達電子工業股份有限公司",
+                "value": 36
+            }
+        ]
+    },
+    {
+        "label": "瑞光大樓",
+        "value": 4,
+        "companies": [
+            {
+                "label": "台達電子工業股份有限公司",
+                "value": 36
+            }
+        ]
+    }
+]

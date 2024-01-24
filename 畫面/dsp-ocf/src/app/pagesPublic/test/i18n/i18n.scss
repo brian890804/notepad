@@ -1,0 +1,16 @@
+.i18n {
+	padding: 12px 24px;
+
+	&__collapse {
+		margin-bottom: 16px;
+		&__item {
+			margin-top: 12px;
+
+			&__sample {
+				background: #0087dc33;
+				text-align: center;
+				padding: 8px;
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+.treeTable {
+	background-color: white;
+	border-radius: 6px;
+	// height: 200px;
+	overflow: auto;
+	box-shadow: 2px 2px 3px #ccc;
+
+	&__table {
+		table-layout: fixed;
+		min-width: 100%;
+		width: auto;
+		overflow: unset !important;
+
+		&__tree {
+			width: 20%;
+			overflow-x: auto;
+			padding: 3px 0px;
+			background-color: white;
+			height: 0;
+			vertical-align: top;
+		}
+
+		thead {
+			tr {
+				box-shadow: 0 0 5px #ccc;
+				position: sticky;
+				top: 0;
+				background: white;
+				z-index: 3;
+
+				th {
+					padding: 8px 0px;
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				&:nth-child(odd) {
+					background-color: #f7f7f7;
+				}
+			}
+		}
+	}
+}
