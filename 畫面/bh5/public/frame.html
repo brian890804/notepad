@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B次元-绅士动漫交流</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+
+    }
+
+    .root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .root_body {
+      width: 100vw;
+      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
+      margin: auto;
+      border: none;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JGS6Q3L39"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8JGS6Q3L39');
+  </script>
+  <!-- Google Tag Manager -->
+  <script async>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js",
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + 'GTM-WN8PS24' + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", 'GTM-WN8PS24');
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WN8PS24" height="0" width="0"
+      style="display: none; visibility: hidden"></iframe></noscript>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div id="root" class="root">
+  </div>
+  <script>
+    let rootUrl = "/";
+    let urlParameter = location.search;
+    let theRequest = {};
+    let strs = null;
+    if (urlParameter.indexOf("?") !== -1) {
+      let str = urlParameter.substr(1);
+      strs = str.split("&");
+      for (let i = 0; i < strs.length; i++) {
+        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+      }
+    }
+
+    function isEmpty(obj) {
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          return false;
+        }
+      }
+
+      return JSON.stringify(obj) === JSON.stringify({});
+    }
+
+    if (!isEmpty(theRequest)) {
+      rootUrl = rootUrl + "?";
+      for (let key in theRequest) {
+        rootUrl += key + "=" + theRequest[key] + "&";
+      }
+      rootUrl = rootUrl.slice(0, rootUrl.length - 1);
+    }
+
+    let frame = document.createElement("iframe");
+    frame.src = rootUrl;
+    frame.className = "root_body";
+    document.getElementById("root").appendChild(frame);
+  </script>
+</body>
+
+</html>

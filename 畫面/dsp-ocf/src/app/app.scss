@@ -1,0 +1,15 @@
+.app {
+	height: 100vh;
+	max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	&__body {
+		flex: 1;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-height: calc(100vh - 53px);
+	}
+}

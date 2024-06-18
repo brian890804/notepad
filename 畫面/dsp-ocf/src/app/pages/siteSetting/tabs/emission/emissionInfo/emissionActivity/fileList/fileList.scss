@@ -1,0 +1,11 @@
+.fileList {
+	display: flex;
+	gap: 4px;
+	&__dot {
+		cursor: pointer;
+		user-select: none;
+		&:hover {
+			color: #0087dc;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+.siteSetting {
+	&__tabs {
+		margin-top: 8px;
+		background: white;
+		border: 1px solid #d9d9d9;
+		border-radius: 5px;
+		min-height: calc(100vh - 176px) !important;
+
+		.ant-tabs-tabpane {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: calc(100vh - 220px);
+		}
+
+		.ant-tabs-nav {
+			margin: 0;
+		}
+	}
+
+	&__dialogPage {
+		.dspui-dialogPage__dialog {
+			margin-top: 16px;
+			width: 100%;
+
+			.ant-tabs-nav {
+				margin: 0;
+			}
+
+			.ant-tabs-content-holder {
+				background: white;
+				padding: 20px;
+				border: 1px solid #f0f0f0;
+				border-top: 0;
+				border-radius: 0 0 8px 8px;
+			}
+		}
+	}
+}

@@ -1,0 +1,78 @@
+.formulaFormItem {
+	&__selection {
+		display: flex;
+		align-items: center;
+		height: 200px;
+		gap: 8px;
+
+		&__option {
+			flex: 0 0 50%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			padding-top: 8px;
+
+			&__list {
+				flex: 1;
+				overflow: auto;
+				border: 1px solid #a0a0a0;
+				border-radius: 6px;
+
+				&__loading {
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				&__item {
+					height: 48px;
+					padding-left: 8px;
+					display: flex;
+					align-items: center;
+					cursor: pointer;
+					transition: background-color 0.2s ease-in-out;
+
+					&:hover {
+						background-color: #f5f5f5;
+					}
+
+					&:not(:last-child) {
+						border-bottom: 1px solid #a0a0a0;
+					}
+				}
+			}
+		}
+
+		&__operator {
+			flex: 0 0 50%;
+			padding-top: 8px;
+
+			&__list {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				gap: 8px;
+
+				&__item {
+					height: 92px;
+					flex: 0 0 31.55%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+					font-size: 1.5rem;
+					border: 1px solid #a0a0a0;
+					border-radius: 6px;
+					cursor: pointer;
+
+					transition: background-color 0.2s ease-in-out;
+
+					&:hover {
+						background-color: #f5f5f5;
+					}
+				}
+			}
+		}
+	}
+}

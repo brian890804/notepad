@@ -1,0 +1,33 @@
+.tableList {
+	width: 100%;
+	overflow: auto;
+
+	&--hasData {
+		border-top: 1px solid #d9d9d9;
+	}
+
+	&__item {
+		background: #eee;
+
+		&__header {
+			display: flex;
+			align-items: center;
+			padding: 8px 16px;
+			border: 1px solid #d9d9d9;
+			border-width: 0 1px;
+
+			&__title {
+				flex: 1;
+			}
+		}
+	}
+
+	th.dspui-horizontalTable__row__header {
+		width: 80px;
+	}
+
+	.dspui-horizontalTable__table__row__title {
+		width: 120px;
+		min-width: 120px;
+	}
+}

@@ -1,0 +1,133 @@
+.emission {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.highcharts-credits {
+		display: none;
+	}
+
+	.ant-form-item {
+		margin-bottom: 0;
+	}
+
+	&__term {
+		display: flex;
+		gap: 10px;
+		div {
+			flex: 0 0 8%;
+		}
+		.ant-select-selection-item {
+			font-weight: 700;
+		}
+		.ant-select .ant-select-selector {
+			border-radius: 2px;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__chart__groups {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 2px 0 0 0;
+		border-radius: 8px;
+		box-shadow: 0px 2px 5px #888888;
+		&__collapse {
+			width: 100%;
+		}
+	}
+
+	// antd collapse客製化
+	.ant-collapse {
+		position: relative;
+		border: none;
+		&-header {
+			line-height: 0.5 !important;
+			border-radius: 0;
+			background: #53bdff;
+			&:hover {
+				filter: brightness(0.99);
+			}
+			&:active {
+				filter: brightness(0.9);
+			}
+
+			&-text {
+				color: #fff;
+				font-size: 16px;
+				text-align: center;
+				font-weight: 700;
+				user-select: none;
+			}
+		}
+		&-item {
+			border: none;
+			&:before,
+			&:after {
+				content: '';
+				height: 10px;
+				position: absolute;
+				background: #53bdff;
+				left: 49%;
+				right: 49%;
+			}
+			&::before {
+				opacity: 0;
+				transition: opacity 0s;
+				top: -8px;
+				clip-path: polygon(50% 30%, 60% 35%, 70% 50%, 100% 100%, 0 100%, 30% 50%, 40% 35%);
+			}
+			&:after {
+				opacity: 1;
+				transition: opacity 2s;
+				bottom: -8px;
+				clip-path: polygon(50% 95%, 55% 93%, 100% 0, 0 0, 45% 93%);
+			}
+			&-active {
+				&:before {
+					opacity: 1;
+					transition: opacity 2s;
+				}
+				&:after {
+					transition: opacity 0s;
+					opacity: 0;
+				}
+				.ant-collapse-header {
+					border-radius: 0 !important;
+				}
+			}
+		}
+		&-content {
+			border: none;
+		}
+		&-content-box {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+			border: none !important;
+			border-top: 0 !important;
+			place-content: space-between;
+			padding: 20px !important;
+			:active {
+				border: none;
+			}
+		}
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	.animation--fade-in {
+		animation: fadeIn 2s ease-out;
+	}
+}

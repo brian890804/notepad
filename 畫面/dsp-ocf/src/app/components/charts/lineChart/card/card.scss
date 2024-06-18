@@ -1,0 +1,200 @@
+.year-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow-wrap: anywhere;
+	user-select: none;
+	overflow: hidden;
+	&__row {
+		display: flex;
+	}
+
+	&--sticky {
+		&.year-card--medium {
+			padding: 0 !important;
+		}
+		&.year-card--small {
+			justify-content: center;
+		}
+		.year-card {
+			&__tip {
+				&--show {
+					display: block;
+					color: #fff;
+					background: #53bdff;
+					text-align: center;
+					font-size: 12px;
+					font-weight: 700;
+					padding: 5px 0;
+				}
+			}
+
+			&__title {
+				flex: 0 0 50%;
+				align-self: center;
+				&__proportion {
+					display: none;
+				}
+			}
+			&__content {
+				flex: 0 0 50%;
+				flex-direction: row;
+				padding: 0 !important;
+				&__increase {
+					flex: 0 0 50% !important;
+					text-wrap: nowrap;
+				}
+				&__top {
+					width: 100%;
+					align-self: center;
+					&__left {
+						flex: 0 !important;
+						display: none !important;
+					}
+				}
+				&__bottom {
+					display: none !important;
+				}
+			}
+			&__divider {
+				display: none !important;
+			}
+		}
+	}
+
+	&--medium {
+		padding: 5px 10px;
+		.year-card {
+			&__divider {
+				display: block;
+				width: 100%;
+				margin: 10% 0;
+				padding: 0 5%;
+				background: #c4c4c4;
+				height: 1.2px;
+			}
+			&__content {
+				padding: 15% 0 !important;
+			}
+			&__row {
+				padding: 5px 10px;
+			}
+		}
+	}
+
+	&--small {
+		.year-card {
+			&__title {
+				font-size: 18px;
+			}
+		}
+	}
+
+	&--show-container {
+		border: 1px solid #ededed;
+		border-radius: 5px;
+		box-shadow: 0px 2px 5px #888888;
+		cursor: pointer;
+		transition: 0.3s;
+		&.year-card {
+			&--small {
+				padding: 5px 10px !important;
+			}
+		}
+		.year-card {
+			&__content {
+				padding: 10px 0;
+			}
+		}
+		&:hover {
+			transform: scale(1.05);
+			background: #cdecff;
+		}
+
+		&:active {
+			filter: brightness(0.8);
+		}
+	}
+
+	&__tip {
+		display: none;
+	}
+
+	&__title {
+		display: flex;
+		min-width: 0;
+		color: #0087dc;
+		font-weight: bold;
+		font-size: 20px;
+		white-space: nowrap;
+		&__description {
+			flex: 1;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		&__proportion {
+			flex: 0 0 10%;
+			font-size: 16px;
+			align-self: center;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		overflow-wrap: anywhere;
+		gap: 15px;
+		&__top,
+		&__bottom {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			&__left,
+			&__center {
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+			}
+
+			&__left {
+				text-align: center;
+			}
+
+			&__center {
+				text-align: end;
+			}
+		}
+
+		&__date {
+			font-size: 9px;
+			display: block;
+		}
+
+		&__unit {
+			font-size: 12px;
+		}
+
+		&__title {
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		&__value {
+			text-wrap: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		&__increase {
+			align-self: baseline;
+			margin-top: 5px;
+			text-align: center;
+		}
+	}
+	&__divider {
+		display: none;
+	}
+}

@@ -1,0 +1,17 @@
+.validateCode {
+	&__code {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		&__canvas {
+			border: 1px solid #455263;
+		}
+
+		&__change {
+			color: #455263;
+		}
+
+		margin-top: 16px;
+	}
+}

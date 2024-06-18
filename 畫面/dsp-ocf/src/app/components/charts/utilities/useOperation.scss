@@ -1,0 +1,15 @@
+.percent {
+	display: flex;
+	place-content: center;
+	font-weight: 600;
+	color: #e53b2f;
+
+	&--decrease {
+		color: #84c50d;
+	}
+	&__number {
+		overflow: hidden;
+		text-wrap: nowrap;
+		text-overflow: ellipsis;
+	}
+}

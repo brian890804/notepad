@@ -1,0 +1,17 @@
+.emission {
+	&__table {
+		padding: 0 16px;
+	}
+
+	&__shema {
+		&__resource-field {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			&__icon {
+				color: red;
+				font-size: 18px;
+			}
+		}
+	}
+}

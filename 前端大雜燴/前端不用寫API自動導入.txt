@@ -1,0 +1,2 @@
+讀取swagger 的json
+然後 再用openapi 產

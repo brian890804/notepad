@@ -1,0 +1,9 @@
+.siteTag {
+	margin-right: 0;
+	cursor: default;
+
+	&__companies {
+		display: flex;
+		flex-direction: column;
+	}
+}

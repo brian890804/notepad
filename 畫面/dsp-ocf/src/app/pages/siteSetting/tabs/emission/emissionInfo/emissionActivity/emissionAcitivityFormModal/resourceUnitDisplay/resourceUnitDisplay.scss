@@ -1,0 +1,17 @@
+.resourceUnitDisplay {
+	display: flex;
+	justify-content: flex-end;
+    align-items: center;
+	gap: 8px;
+
+	&__approximately {
+	}
+
+	&__value {
+		font-weight: bold;
+		font-size: 14px;
+	}
+
+	&__unit {
+	}
+}

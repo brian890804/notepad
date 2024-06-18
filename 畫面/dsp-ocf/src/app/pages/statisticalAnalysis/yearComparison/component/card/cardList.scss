@@ -1,0 +1,35 @@
+.card-list {
+	&__groups {
+		gap: 20px;
+		display: flex;
+		opacity: 1;
+		transition: 2s;
+		&--sticky {
+			position: sticky;
+			top: -20px;
+			z-index: 1;
+			background: #fff;
+			opacity: 1;
+		}
+		&--hidden {
+			position: sticky;
+			top: -100px;
+			transition: 0s;
+			height: 0;
+			pointer-events: none;
+			opacity: 0;
+		}
+
+		&__item {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			&--hidden {
+				display: none;
+			}
+			&--space {
+				justify-content: space-between;
+			}
+		}
+	}
+}

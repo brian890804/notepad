@@ -1,0 +1,21 @@
+.emissionBasicInfo {
+	display: flex;
+	gap: 20px;
+
+	&__basicInfo {
+		flex: 1;
+		overflow: hidden;
+	}
+
+	&__source {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.factorTables {
+		width: 100%;
+		overflow: hidden;
+	}
+}

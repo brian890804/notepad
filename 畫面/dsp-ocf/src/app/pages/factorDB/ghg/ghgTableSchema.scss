@@ -1,0 +1,10 @@
+.ghgTableSchema {
+	&__field {
+		display: flex;
+		flex-direction: column;
+		&__norm {
+			font-size: 10px;
+			color: grey;
+		}
+	}
+}

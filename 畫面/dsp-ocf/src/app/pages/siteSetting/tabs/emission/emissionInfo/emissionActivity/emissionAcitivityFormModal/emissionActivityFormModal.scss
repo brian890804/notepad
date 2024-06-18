@@ -1,0 +1,23 @@
+.emissionActivityFormModal {
+	&__title {
+		font-size: 14px;
+		padding: 12px 24px 0;
+		margin: 12px -24px 0;
+		border-top: 1px solid #c4c4c4;
+	}
+
+	&__lossFactor {
+		display: inline-flex;
+		align-items: center;
+
+		&__info {
+			font-size: 16px;
+			margin-left: 8px;
+			cursor: pointer;
+
+			&:hover {
+				color: #0087dc;
+			}
+		}
+	}
+}

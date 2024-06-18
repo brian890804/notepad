@@ -1,0 +1,10 @@
+.siteBasicinfo {
+	padding: 16px;
+	margin: auto;
+
+	&__image {
+		img {
+			max-height: calc(64px * 4); // 最大不超過4格 (表單每隔大約 64px)
+		}
+	}
+}
