@@ -1,0 +1,76 @@
+/**
+ * @description 新增svg元素
+ */
+const convertCanvasToSvg = (canvas) => {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("width", canvas.width);
+  svg.setAttribute("height", canvas.height);
+
+  const img = document.createElementNS(svgNS, "image");
+  img.setAttribute("href", canvas.toDataURL("image/png"));
+  img.setAttribute("width", canvas.width);
+  img.setAttribute("height", canvas.height);
+
+  svg.appendChild(img);
+
+  const serializer = new XMLSerializer();
+  const svgString = serializer.serializeToString(svg);
+  return svgString;
+};
+
+/**
+ * @description 下載png jpg 檔案
+ */
+const downloadImageFile = (dataUrl, filename) => {
+  const link = document.createElement("a");
+  link.download = filename;
+  link.href = dataUrl;
+  link.click();
+};
+/**
+ * 下載 HTML 元素為指定類型的圖片或 SVG 文件。
+ *
+ * @param {Element} ref - 要下載的 HTML 元素的 useRef 注意不要傳ref.current近來。
+ * @param {'jpeg'|'png'|'svg'|'pdf'} type - 輸出類型，可以是 'jpeg'、'png'、'svg' 或 'pdf'。
+ * @param {string} exportName - 輸出檔案的名稱。
+ * @description 透過 html2canvas 將指定的 HTML 元素轉換為指定類型的圖片或 SVG 文件並下載。
+ */
+export const html2File = (ref, type, exportName = "exportData") => {
+  html2canvas(ref.current, {
+    allowTaint: true,
+    useCORS: true,
+    backgroundColor: null,
+  }).then(function (canvas) {
+    let dataUrl;
+    let blob;
+
+    switch (type) {
+      case "jpeg":
+      case "png":
+        dataUrl = canvas.toDataURL(`image/${type}`);
+        downloadImageFile(dataUrl, `${exportName}.${type}`);
+        break;
+      case "svg":
+        // eslint-disable-next-line no-case-declarations
+        const svgString = convertCanvasToSvg(canvas);
+        blob = new Blob([svgString], { type: "image/svg+xml" });
+        saveAs(blob, `${exportName}.svg`);
+        break;
+      case "pdf":
+        // eslint-disable-next-line no-case-declarations
+        const pdf = new jsPDF({
+          orientation: "landscape",
+          unit: "px",
+          format: "a3",
+        });
+        pdf.addImage(canvas.toDataURL("image/jpeg"), "JPEG", 0, 0);
+        pdf.save(`${exportName}.pdf`);
+        break;
+      default:
+        throw new Error(
+          "Unsupported type. Supported types are 'jpeg', 'png', 'svg' and 'pdf'.",
+        );
+    }
+  });
+};
