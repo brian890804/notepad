@@ -28,6 +28,7 @@ const downloadImageFile = (dataUrl, filename) => {
   link.href = dataUrl;
   link.click();
 };
+
 /**
  * 下載 HTML 元素為指定類型的圖片或 SVG 文件。
  *
@@ -38,9 +39,35 @@ const downloadImageFile = (dataUrl, filename) => {
  */
 export const html2File = (ref, type, exportName = "exportData") => {
   html2canvas(ref.current, {
-    allowTaint: true,
     useCORS: true,
     backgroundColor: null,
+    onclone: (documentClone) => {
+      // 轉SVG style會有問
+      // 需重新塞入的style list
+      const transformProperties = [
+        "fill",
+        "color",
+        "font-size",
+        "stroke",
+        "font",
+      ];
+      let svgList = Array.from(documentClone.getElementsByTagName("svg"));
+      for (let svgElement of svgList) {
+        recurseElementChildren(svgElement);
+      }
+      function recurseElementChildren(node) {
+        if (!node.style) return;
+        // getComputedStyle 抓原本element裡面的所有style
+        let styles = getComputedStyle(node);
+        for (let transformProperty of transformProperties) {
+          // 塞style
+          node.style[transformProperty] = styles[transformProperty];
+        }
+        for (let child of Array.from(node.childNodes)) {
+          recurseElementChildren(child);
+        }
+      }
+    },
   }).then(function (canvas) {
     let dataUrl;
     let blob;
@@ -52,19 +79,24 @@ export const html2File = (ref, type, exportName = "exportData") => {
         downloadImageFile(dataUrl, `${exportName}.${type}`);
         break;
       case "svg":
-        // eslint-disable-next-line no-case-declarations
-        const svgString = convertCanvasToSvg(canvas);
+        var svgString = convertCanvasToSvg(canvas);
         blob = new Blob([svgString], { type: "image/svg+xml" });
         saveAs(blob, `${exportName}.svg`);
         break;
       case "pdf":
-        // eslint-disable-next-line no-case-declarations
-        const pdf = new jsPDF({
+        var pdf = new jsPDF({
           orientation: "landscape",
           unit: "px",
           format: "a3",
         });
-        pdf.addImage(canvas.toDataURL("image/jpeg"), "JPEG", 0, 0);
+        var ratio = canvas.width / canvas.height;
+        var pageWidth = pdf.internal.pageSize.getWidth();
+        var height = pageWidth / ratio;
+        var config = [0, 0];
+        if (canvas.width > pageWidth) {
+          config.push(pageWidth, height);
+        }
+        pdf.addImage(canvas.toDataURL("image/jpeg"), "JPEG", ...config);
         pdf.save(`${exportName}.pdf`);
         break;
       default:
