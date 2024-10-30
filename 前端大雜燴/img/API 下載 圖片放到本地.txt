@@ -1,0 +1,32 @@
+這是拿request 中的blob 用 createObjectURL FUNC 
+
+  useEffect(() => {
+    if (!item || !open) return;
+    downloadIcon({ iconId: item.objectId }).then((res) => {
+      const url = URL.createObjectURL(res.data);
+      setImgInfo({
+        title: item.description,
+        src: url,
+      });
+    });
+    return () => {
+      if (imgInfo.src) {
+        URL.revokeObjectURL(imgInfo.src);
+      }
+    };
+  }, [item, open, downloadIcon]);
+
+
+------
+    <img
+          ref={imgRef}
+          src={imgInfo.src || PhotoIcon}
+          onError={() => (imgRef.current.src = PhotoIcon)}
+        />
+
+
+-------------
+API axios optional 要加這個 把原本的stream改成blob
+{
+    responseType: "blob",
+  }
