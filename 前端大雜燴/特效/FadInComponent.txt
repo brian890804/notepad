@@ -1,0 +1,39 @@
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import Styles from './fadInComponent.module.scss';
+
+interface FadInComponentProps {
+	// TODO: Define props
+	children: ReactNode;
+}
+
+const FadInComponent: FC<FadInComponentProps> = ({ children }) => {
+	const [isVisible, setIsVisible] = useState(false);
+	const elementRef = useRef(null);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsVisible(true);
+					observer.unobserve(entry.target); // 只觸發一次
+				}
+			},
+			{
+				threshold: 0.1, // 元素 10% 可見觸發
+			}
+		);
+
+		if (elementRef.current) {
+			observer.observe(elementRef.current);
+		}
+
+		return () => observer.disconnect();
+	}, []);
+	return (
+		<article ref={elementRef} className={isVisible ? Styles.fadeIn : Styles.hidden}>
+			{children}
+		</article>
+	);
+};
+
+export default FadInComponent;
